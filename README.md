@@ -15,6 +15,27 @@ To install the package after you have closed the respoistory, you'll want to run
 pip3 install --user -e .
 ```
 
+## Database Requirements
+
+This project uses SQlite3. 
+
+Table setup:
+
+```
+sqlite> .schema hosts
+CREATE TABLE hosts(
+hostname TEXT NOT NULL,
+IP TEXT NOT NULL,
+lastup TEXT,
+lastdown TEXT,
+fqdn TEXT,
+site TEXT NOT NULL,
+type TEXT NOT NULL,
+parent TEXT NOT NULL,
+status TEXT
+);
+```
+
 ## Preparing for Development
 
 Follow these steps to start developing with this project:
