@@ -1,7 +1,7 @@
 import os
 import sqlite3
 import time
-
+from sentry import missingtable
 con = sqlite3.connect('sentry.db')
 cursorObj = con.cursor()
 
@@ -29,8 +29,11 @@ def enterdata():
     # print(entrydata)
 
 def processdata():
-    cursorObj.execute('''INSERT INTO hosts(hostname, IP, fqdn, site, type, parent) VALUES(?, ?, ?, ?, ?, ?)''', enterdata())
-    con.commit()
+    try:
+        cursorObj.execute('''INSERT INTO hosts(hostname, IP, fqdn, site, type, parent) VALUES(?, ?, ?, ?, ?, ?)''', enterdata())
+        con.commit()
+    except sqlite3.OperationalError:
+        missingtable()
     print("Data Inserted")
     printdata()
 
@@ -38,7 +41,7 @@ def printdata():
     cursorObj.execute('SELECT * FROM hosts')
     rows = cursorObj.fetchall()
     for row in rows:
-    print(row)
+        print(row)
 
 if __name__ == "__main__":
     os.system('clear')

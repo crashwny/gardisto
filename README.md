@@ -5,7 +5,7 @@ Utility for watching hosts/servers for uptime.
 
 ## Usage
 
-Run sentry --hostentry to enter hosts to monitor, then add sentry --run to your crontap for the desired interval. 
+Run `sentry addhost` to enter hosts to monitor, then add `sentry run` to your crontap for the desired interval. 
 
 ## Installation from source
 
