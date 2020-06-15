@@ -2,7 +2,7 @@ import os
 import sqlite3
 import datetime
 # import sys (for sys.exit(1)
-from sentry import hostping
+from sentry import hostping,missingtable
 
 #connect this to your database with next 2 lines
 con = sqlite3.connect('sentry.db')
@@ -29,6 +29,7 @@ def getlist():
         hostlist = cursorObj.fetchall()
     except sqlite3.OperationalError:
         hostlist = 0
+        missingtable()
     return hostlist
 
 def pinglist():
@@ -59,6 +60,7 @@ def hoststatus(host):
         status = cursorObj.fetchall()
     except sqlite3.OperationalError as err:
         status = 0
+        missingtable()
     return status
 
 def updatestatus(host, status, date):
