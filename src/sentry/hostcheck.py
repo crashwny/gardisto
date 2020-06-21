@@ -2,7 +2,7 @@ import os
 import sqlite3
 import datetime
 # import sys (for sys.exit(1)
-from sentry import hostping,missingtable
+from sentry import hostping, missingtable
 
 #connect this to your database with next 2 lines
 con = sqlite3.connect('sentry.db')
