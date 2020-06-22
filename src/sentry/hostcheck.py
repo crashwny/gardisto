@@ -2,7 +2,7 @@ import os
 import sqlite3
 import datetime
 # import sys (for sys.exit(1)
-from sentry import hostping, missingtable
+from sentry import hostping, missingtable, notify
 
 #connect this to your database with next 2 lines
 con = sqlite3.connect('sentry.db')
@@ -37,13 +37,6 @@ def pinglist():
     hostlist = getlist()
     resultlist = []
     for a,b in hostlist:
-    #     cmd = 'ping -c 1 -Aq ' + b + ' > /dev/null 2>&1'
-    #     result = os.system(cmd)
-    #     if result == 0:
-    #         pingresult = 1
-    #     else:
-    #         pingresult = 0
-    #     resultlist.append((a, pingresult))
         result = hostping.hostPing(b)
         if result == True:
             pingresult = 0
@@ -76,6 +69,7 @@ def updatestatus(host, status, date):
     else:
         if status == 1:
             command = 'UPDATE hosts SET status = "1", lastup = "' + date + '" WHERE hostname = "' + host + '"'
+            notify.notify(host)
         else:
             return
     cursorObj.execute(command)
