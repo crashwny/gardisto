@@ -5,7 +5,18 @@ Utility for watching hosts/servers for uptime.
 
 ## Usage
 
-Run `sentry addhost` to enter hosts to monitor, then add `sentry run` to your crontap for the desired interval. 
+To have sentry watch over your hosts after set up, add `sentry run` to your crontab at your desired interval. 
+    For example, `1,11,21,31,41,51 * * * * sentry run`
+
+### Sentry Maintenance Commands
+ - `sentry addhost` To add hosts for Sentry to monitor
+ - `sentry removehost -[hostname]`
+ - `sentry edithost -[hostname]`
+
+### Sentry Monitoring Commands
+ - `sentry run` Runs the Sentry. Should be added to your crontab for a specified interval
+ - `sentry showstats -[hostname or all] -[stat or all]` Shows statistics for specified host or all hosts, all stats or one specified
+ - `sentry show -[hostname or all]` Shows information for specified host or for all hosts
 
 ## Installation from source
 
@@ -26,13 +37,13 @@ sqlite> .schema hosts
 CREATE TABLE hosts(
 hostname TEXT NOT NULL,
 IP TEXT NOT NULL,
+status TEXT,
 lastup TEXT,
 lastdown TEXT,
 fqdn TEXT,
 site TEXT NOT NULL,
 type TEXT NOT NULL,
-parent TEXT NOT NULL,
-status TEXT
+parent TEXT NOT NULL
 );
 ```
 

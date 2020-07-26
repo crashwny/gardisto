@@ -1,3 +1,4 @@
+import subprocess
 import os
 import sqlite3
 import time
@@ -25,8 +26,11 @@ def enterdata():
     hostType = input("Enter host type, vm or bm: ")
     parent = input("If the host is a vm, please enter parent host's name: ")
     entrydata = (hostname, IP, fqdn, site, hostType, parent)
+    # sship = "sentry@" + IP
+    # subprocess.Popen(["/usr/bin/ssh-copy-id", sship], stdout=subprocess.PIPE)
     return entrydata
     # print(entrydata)
+    print("Remember to add ssh keys for sentry to access your hosts!")
 
 def processdata():
     try:
