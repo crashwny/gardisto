@@ -7,15 +7,19 @@ try:
     cursorObj.execute('''CREATE TABLE hosts(
     hostname TEXT NOT NULL,
     IP TEXT NOT NULL,
-    status TEXT default '0',
+    status BOOLEAN NOT NULL default '0',
     lastup TEXT,
     lastdown TEXT,
     fqdn TEXT,
     site TEXT NOT NULL,
     type TEXT NOT NULL,
-    parent TEXT NOT NULL
+    parent TEXT NOT NULL,
+    sentryAdded BOOLEAN NOT NULL default '0',
+    sentryKeyAdded BOOLEAN NOT NULL default '0',
+    userAdded BOOLEAN NOT NULL default '0',
+    userKeyAdded BOOLEAN NOT NULL default '0'
     );''')
     con.commit()
     cursorObj.close()
 except sqlite3.OperationalError:
-    print(' ')
+    print('  ')
