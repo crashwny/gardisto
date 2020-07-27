@@ -4,10 +4,11 @@ con = sqlite3.connect('sentry.db')
 cursorObj = con.cursor()
 
 def showone(host):
-    print("coming soon")
-
+    command="SELECT * FROM hosts WHERE hostname = '" + host + "'"
+    cursorObj.execute(command)
+    data = cursorObj.fetchall()
+    print(data)
 def showall():
-    print("coming soon")
     cursorObj.execute("SELECT * FROM hosts")
     print(cursorObj.fetchall())
 

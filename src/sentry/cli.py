@@ -7,15 +7,20 @@ def create_parser():
     """)
 
     parser.add_argument("toDo", help="Choose to run the check or add a host")
-    parser.add_argument('--host', type=str, action="store", dest="host", help="Enter a hostname for the desired action")
-    parser.add_argument('--all', dest="all", action="store_true", help="Use all hosts for desired action")
-    parser.add_argument('--stat', type=str, action="store", dest="stat", help="Enter a specific statistic to check")
-    parser.add_argument('--stats', action="store_true", help="Run check with all statistics")
+    parser.add_argument('-host', action="store", dest='host', help="Enter a hostname for the desired action")
+    parser.add_argument('-all', dest="allhost", action="store_true", help="Use all hosts for desired action")
+    parser.add_argument('-stat', action="store", dest="stat", help="Enter a specific statistic to check")
+    parser.add_argument('-stats', action="store_true", help="Run check with all statistics")
     return parser
 
 def main():
     from sentry import hostentry, hostping, hostcheck 
     args = create_parser().parse_args()
+    print(args.toDo)
+    print(args.host)
+    print(args.allhost)
+    print(args.stat)
+    print(args.stats)
     if args.toDo == 'addhost':
         hostentry.processdata()
         sys.exit()
@@ -29,15 +34,15 @@ def main():
         edithost(host)
         sys.exit()
     if args.toDo == 'show':
-        if all == False:
-            hostInfo.showone(host)
-        elif all ==True:
+        if args.allhost == False:
+            hostInfo.showone(args.host)
+        elif args.allhost ==True:
             hostInfo.showall()
         else:
             hostInfo.showall()
         sys.exit()
     if args.toDo == 'showstats':
-        if stats == True:
+        if args.stats == True:
             showstats.allStats()
             sys.exit()
         else:
