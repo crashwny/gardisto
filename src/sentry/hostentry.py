@@ -14,15 +14,15 @@ def enterdata():
     hostType = input("Enter host type, vm or bm: ")
     parent = input("If the host is a vm, please enter parent host's name: ")
     entrydata = (hostname, IP, fqdn, site, hostType, parent)
-    return entrydata
     print("Remember to add ssh keys for sentry to access your hosts!")
+    return entrydata
 
 def processdata():
     try:
         cursorObj.execute('''INSERT INTO hosts(hostname, IP, fqdn, site, type, parent) VALUES(?, ?, ?, ?, ?, ?)''', enterdata())
         con.commit()
     except sqlite3.OperationalError:
-        missingtable()
+        missingtable.create()
     print("Data Inserted")
     printdata()
 
