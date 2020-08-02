@@ -1,5 +1,5 @@
 import sqlite3
-
+import subprocess
 def create():
     con = sqlite3.connect('sentry.db')
     cursorObj = con.cursor()
@@ -20,6 +20,7 @@ def create():
         userAdded BOOLEAN NOT NULL default '0',
         userKeyAdded BOOLEAN NOT NULL default '0'
         );''')
+        cursorObj.execute('''CREATE VIEW status_view AS SELECT hostname AS "Hostname", status AS "is down?", lastup AS "Last up", lastdown AS "Last down" FROM hosts;''')
         con.commit()
         cursorObj.close()
     except sqlite3.OperationalError:

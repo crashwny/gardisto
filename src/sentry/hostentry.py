@@ -18,11 +18,14 @@ def enterdata():
     return entrydata
 
 def processdata():
+    entrydata = enterdata()
     try:
-        cursorObj.execute('''INSERT INTO hosts(hostname, IP, fqdn, site, type, parent) VALUES(?, ?, ?, ?, ?, ?)''', enterdata())
+        cursorObj.execute('''INSERT INTO hosts(hostname, IP, fqdn, site, type, parent) VALUES(?, ?, ?, ?, ?, ?)''', entrydata)
         con.commit()
     except sqlite3.OperationalError:
         missingtable.create()
+        cursorObj.execute('''INSERT INTO hosts(hostname, IP, fqdn, site, type, parent) VALUES(?, ?, ?, ?, ?, ?)'''    , entrydata)
+        con.commit()
     print("Data Inserted")
     printdata()
 
