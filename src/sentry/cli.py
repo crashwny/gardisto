@@ -14,7 +14,7 @@ def create_parser():
     return parser
 
 def main():
-    from sentry import hostentry, hostping, hostcheck, removehost 
+    from sentry import hostentry, hostping, hostcheck, removehost, edithost
     args = create_parser().parse_args()
     #print(args.toDo)
     #print(args.host)
@@ -31,7 +31,7 @@ def main():
         removehost.removehost(args.host)
         sys.exit()
     if args.toDo == 'edithost':
-        edithost(host)
+        edithost.oneHost(args.host)
         sys.exit()
     if args.toDo == 'show':
         if args.allhost == False:
