@@ -1,7 +1,7 @@
 import sqlite3
 import subprocess
 def create():
-    con = sqlite3.connect('sentry.db')
+    con = sqlite3.connect('/home/sentry/data/sentry.db')
     cursorObj = con.cursor()
 
     try:

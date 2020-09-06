@@ -5,7 +5,7 @@ import datetime
 from sentry import hostping, missingtable, notify
 
 #connect this to your database with next 2 lines
-con = sqlite3.connect('sentry.db')
+con = sqlite3.connect('/home/sentry/data/sentry.db')
 cursorObj = con.cursor()
 
 # this block is to remind me of the database fields

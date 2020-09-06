@@ -1,6 +1,6 @@
 # hostinfo: show host information
 import sqlite3
-con = sqlite3.connect('sentry.db')
+con = sqlite3.connect('/home/sentry/data/sentry.db')
 cursorObj = con.cursor()
 
 def showone(host):

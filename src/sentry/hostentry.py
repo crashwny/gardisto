@@ -3,7 +3,7 @@ import os
 import sqlite3
 import time
 from sentry import missingtable
-con = sqlite3.connect('sentry.db')
+con = sqlite3.connect('/home/sentry/data/sentry.db')
 cursorObj = con.cursor()
 
 def enterdata():
