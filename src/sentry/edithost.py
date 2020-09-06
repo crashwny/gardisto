@@ -1,7 +1,7 @@
 # edit a host's db entry
 import sqlite3
 from sentry import missingtable
-con = sqlite3.connect('/home/sentry/data/sentry.db')
+con = sqlite3.connect('/var/sentry/data/sentry.db')
 cursorObj = con.cursor()
 from sentry import hostentry
 

@@ -1,5 +1,5 @@
 import sqlite3
-con = sqlite3.connect('/home/sentry/data/sentry.db')
+con = sqlite3.connect('/var/sentry/data/sentry.db')
 cursorObj = con.cursor()
 
 # usage: remove a host from sentry by calling removehost.removehost(hostname)
