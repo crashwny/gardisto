@@ -63,15 +63,15 @@ def updatestatus(host, status, date):
     oldstatus = int(oldstatus[0])
     if oldstatus == 1:
         if status == 1:
-            return
+            command = 'UPDATE hosts SET lastdown = "' + date + '"WHERE hostname = "' + host + '"'
         else:
-            command = 'UPDATE hosts SET status = "0", lastdown = "' + date + '" WHERE hostname = "' + host + '"'
+            command = 'UPDATE hosts SET status = "0", lastup = "' + date + '" WHERE hostname = "' + host + '"'
     else:
         if status == 1:
-            command = 'UPDATE hosts SET status = "1", lastup = "' + date + '" WHERE hostname = "' + host + '"'
+            command = 'UPDATE hosts SET status = "1", lastdown = "' + date + '" WHERE hostname = "' + host + '"'
             notify.notify(host)
         else:
-            return
+            command = 'UPDATE hosts SET status = "0", lastup = "' + date + '" WHERE hostname = "' + host + '"'
     cursorObj.execute(command)
     con.commit()
     return
