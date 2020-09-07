@@ -1,5 +1,5 @@
 from argparse import ArgumentParser as aparse
-from sentry import hostentry, hostcheck, removehost, hostInfo
+from sentry import hostentry, hostcheck, removehost, printdata
 import sys
 def create_parser():
     parser = aparse(description="""
@@ -35,9 +35,9 @@ def main():
         sys.exit()
     if args.toDo == 'show':
         if args.allhost == False:
-            hostInfo.showone(args.host)
+            printdata.prettyPrint(args.host)
         elif args.allhost ==True:
-            hostInfo.showall()
+            printdata.printmany()
         else:
             hostInfo.showall()
         sys.exit()

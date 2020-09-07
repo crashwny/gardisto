@@ -3,19 +3,20 @@ import sqlite3
 from sentry import missingtable
 con = sqlite3.connect('/var/sentry/data/sentry.db')
 cursorObj = con.cursor()
-from sentry import hostentry
+from sentry import hostentry, printdata
 
 def oneHost(host):
-    olddata = cursorObj.execute(
-        "SELECT * FROM hosts WHERE hostname = ?", (host,)
-    ).fetchall()    
+    somedata = printdata.getdata(host)
+#    olddata = cursorObj.execute(
+#        "SELECT * FROM hosts WHERE hostname = ?", (host,)
+#    ).fetchall()    
     # olddata has to be interated through into a new variable so that the data can be interable
-    print(olddata)
-    for data in olddata:
-        somedata = data
+#    print(olddata)
+#    for data in olddata:
+#        somedata = data
 #    newdata = hostentry.enterdata()
 #    cursorObj.execute(
-    print(somedata)
+#    print(somedata)
     hostName = somedata[0]
     ipAddr = somedata[1]
     fqdn = somedata[5]
@@ -25,6 +26,8 @@ def oneHost(host):
     sentryKeyAdded = somedata[10]
     userAdded = somedata[11]
     userKeyAdded = somedata[12]
+    
+
     print(hostName)
     print('''
     Which field would you like to change?
@@ -76,7 +79,7 @@ def oneHost(host):
             newdata = 0
 
     command = 'UPDATE hosts SET ' + field + ' = "' + newdata + '" WHERE hostname = "' + host + '"'
-    print(command)
+    #print(command)
     cursorObj.execute(command)
     con.commit()
 
