@@ -15,15 +15,16 @@ Every host needs to have user 'sentry' with an SSH key added and verified SSH ac
     `Match User !root
         PasswordAuthentication no`
 
+
 ### Sentry Maintenance Commands
  - `sentry addhost` To add hosts for Sentry to monitor
- - `sentry removehost -[hostname]` (coming soon)
- - `sentry edithost -[hostname]` (coming soon)
+ - `sentry removehost [-host hostname]`
+ - `sentry edithost [-host hostname]`
 
 ### Sentry Monitoring Commands
  - `sentry run` Runs the Sentry. Should be added to your crontab for a specified interval
- - `sentry showstats [--all] [--host hostname] [--stat] [--stats]` Shows statistics for specified host or all hosts, all stats or one specified (coming soon)
- - `sentry show -[hostname or all]` Shows information for specified host or for all hosts (coming soon)
+ - `sentry showstats [-stat name, -stats] [-host hostname]` Shows statistics for specified host or all hosts, all stats or one specified (coming soon)
+ - `sentry show [-host hostname, -all]` Shows information for specified host or for all hosts (single host works, multihost support coming soon)
 
 ## Installation from source
 
@@ -32,6 +33,12 @@ To install the package after you have cloned the respository, you'll want to run
 ```
 pip3 install --user -e .
 ```
+
+For notifications to work, the sentry server must have mutt configured and functioning. This package will not install or configure mutt.
+
+The sentry server needs to have directories set up for use by the monitoring software. Run the following commands as root:
+ - `mkdir -p /var/sentry/data`
+ - `chown sentry:sentry /var/sentry/data`
 
 ## Database Requirements
 
