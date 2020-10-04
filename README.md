@@ -38,7 +38,7 @@ For notifications to work, the sentry server must have mutt configured and funct
 
 The sentry server needs to have directories set up for use by the monitoring software. Run the following commands as root:
  - `mkdir -p /var/sentry/data`
- - `chown sentry:sentry /var/sentry/data`
+ - `chown -R sentry:sentry /var/sentry/`
 
 ## Database Requirements
 
