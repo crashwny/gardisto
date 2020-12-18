@@ -1,7 +1,6 @@
-Sentry
+Gardisto
 ======
-
-Utility for monitoring hosts/servers.
+Formerly known as sentry-public, Gardisto is a utility for monitoring hosts/servers.
 
 ## Usage
 
