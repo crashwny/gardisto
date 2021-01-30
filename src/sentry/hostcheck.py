@@ -5,7 +5,7 @@ import datetime
 from sentry import hostping, missingtable, notify
 
 #connect this to your database with next 2 lines
-con = sqlite3.connect('/var/sentry/data/sentry.db')
+con = sqlite3.connect('/var/gardisto/sentry.db')
 cursorObj = con.cursor()
 
 # this block is to remind me of the database fields
@@ -90,4 +90,3 @@ if __name__ == "__main__":
 def start():
     resultwrite()
     con.close()
-

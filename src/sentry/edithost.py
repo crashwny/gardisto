@@ -1,7 +1,7 @@
 # edit a host's db entry
 import sqlite3
 from sentry import missingtable
-con = sqlite3.connect('/var/sentry/data/sentry.db')
+con = sqlite3.connect('/var/gardisto/sentry.db')
 cursorObj = con.cursor()
 from sentry import hostentry, printdata
 
@@ -9,7 +9,7 @@ def oneHost(host):
     somedata = printdata.getdata(host)
 #    olddata = cursorObj.execute(
 #        "SELECT * FROM hosts WHERE hostname = ?", (host,)
-#    ).fetchall()    
+#    ).fetchall()
     # olddata has to be interated through into a new variable so that the data can be interable
 #    print(olddata)
 #    for data in olddata:
@@ -22,27 +22,27 @@ def oneHost(host):
     fqdn = somedata[5]
     site = somedata[6]
     parent = somedata[8]
-    sentryAdded = somedata[9]
-    sentryKeyAdded = somedata[10]
+    gardistoAdded = somedata[9]
+    gardistoKeyAdded = somedata[10]
     userAdded = somedata[11]
     userKeyAdded = somedata[12]
-    
+
 
     print(hostName)
     print('''
     Which field would you like to change?
-    
+
     1: hostname
     2: IP Address
     3: FQDN
     4: Site/Colocation
     5: Parent Host
-    6: Sentry User Added y/n?
-    7: Sentry Key Added y/n?
-    
+    6: Gardisto User Added y/n?
+    7: Gardisto Key Added y/n?
+
     ''')
     choice = input("Enter the number:\n")
-    
+
     if choice == "1":
         field = "hostname"
         print("Old hostname is " + hostName)
@@ -64,15 +64,15 @@ def oneHost(host):
         print("Old Parent host name is " + parent)
         newdata = input("What is the new parent host name?\n")
     elif choice == "6":
-        field = "sentryAdded"
-        newdata = input("Has the sentry user been added? (y or n)\n")
+        field = "gardistoAdded"
+        newdata = input("Has the Gardisto user been added? (y or n)\n")
         if newdata == "y":
             newdata = "1"
         else:
             newdata = "0"
     else:
-        field = "sentryKeyAdded"
-        newdata = input("Has the sentry user's key been added? (y or n)\n")
+        field = "gardistoKeyAdded"
+        newdata = input("Has the Gardisto user's key been added? (y or n)\n")
         if newdata == "y":
             newdata = 1
         else:
@@ -82,4 +82,3 @@ def oneHost(host):
     #print(command)
     cursorObj.execute(command)
     con.commit()
-

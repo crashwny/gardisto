@@ -1,7 +1,7 @@
 import sqlite3
 import subprocess
 def create():
-    con = sqlite3.connect('/var/sentry/data/sentry.db')
+    con = sqlite3.connect('/var/gardisto/sentry.db')
     cursorObj = con.cursor()
 
     try:
@@ -15,8 +15,8 @@ def create():
         site TEXT NOT NULL,
         type TEXT NOT NULL,
         parent TEXT NOT NULL,
-        sentryAdded BOOLEAN NOT NULL default '0',
-        sentryKeyAdded BOOLEAN NOT NULL default '0',
+        gardistoAdded BOOLEAN NOT NULL default '0',
+        gardistoKeyAdded BOOLEAN NOT NULL default '0',
         userAdded BOOLEAN NOT NULL default '0',
         userKeyAdded BOOLEAN NOT NULL default '0'
         );''')
