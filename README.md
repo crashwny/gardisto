@@ -8,13 +8,16 @@ Utility for monitoring hosts/servers.
 To have Gardisto watch over your hosts after set up, add `gardisto run` to your crontab at your desired interval.
     For example, `1,11,21,31,41,51 * * * * gardisto run`
 
-Every host needs to have user 'gardisto' with an SSH key added and verified SSH access. Run the following commands as root:
+The Gardisto server and each satellite host needs to have user 'gardisto', and satellites with their SSH key added and verified SSH access to Gardisto server. The central server should not have ssh keys on the satellites. Run the following commands as root:
  - `useradd -m -s /bin/bash gardisto`
  - `passwd gardisto` and enter password
- - add this line to /etc/sshd_config:
+<!--- - add this line to /etc/sshd_config:
     `Match User !root
-        PasswordAuthentication no`
-
+        PasswordAuthentication no` ---->
+ - `mkdir /var/gardisto`
+ - `chown gardisto:gardisto /var/gardisto`
+ - and on the satellites, as user gardisto, `cd ~/.ssh; ssh-keygen -t rsa -b 4096 -f gardisto.rsa -N ""`
+   - then `ssh-add gardisto.rsa; ssh-copy-id gardisto@[gardisto.server.ip]`
 
 ### gardisto Maintenance Commands
  - `gardisto addhost` To add hosts for Gardisto to monitor
@@ -28,17 +31,13 @@ Every host needs to have user 'gardisto' with an SSH key added and verified SSH 
 
 ## Installation from source
 
-To install the package after you have cloned the repository, you'll want to run the following command from within the project directory:
+On the Gardisto server, install the package after you have cloned the repository, you'll want to run the following command from within the project directory:
 
 ```
 pip3 install --user -e .
 ```
 
 For notifications to work, the Gardisto server must have mutt configured and functioning. This package will not install or configure mutt.
-
-The Gardisto server needs to have directories set up for use by the monitoring software. Run the following commands as root:
- - `mkdir -p /var/gardisto/data`
- - `chown -R gardisto:gardisto /var/gardisto/`
 
 ## Database Requirements
 
