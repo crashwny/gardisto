@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Sentry collector script for RAM stats
+# Gardisto collector script for RAM stats
 
-date +%Y%m%d%H%M >> /var/sentry/data/senmemory.data
-free -m | tail -2 >> /var/sentry/data/senmemory.data
-
+date +%Y%m%d%H%M >> /var/gardisto/garram.data
+free -m | tail -2 >> /var/gardisto/garram.data

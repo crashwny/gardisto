@@ -14,8 +14,8 @@ The Gardisto server and each satellite host needs to have user 'gardisto', and s
 <!--- - add this line to /etc/sshd_config:
     `Match User !root
         PasswordAuthentication no` ---->
- - `mkdir /var/gardisto`
- - `chown gardisto:gardisto /var/gardisto`
+ - `mkdir -p /var/gardisto/collectors`
+ - `chown -R gardisto:gardisto /var/gardisto`
  - and on the satellites, as user gardisto, `cd ~/.ssh; ssh-keygen -t rsa -b 4096 -f gardisto.rsa -N ""`
    - then `ssh-add gardisto.rsa; ssh-copy-id gardisto@[gardisto.server.ip]`
 
@@ -38,6 +38,17 @@ pip3 install --user -e .
 ```
 
 For notifications to work, the Gardisto server must have mutt configured and functioning. This package will not install or configure mutt.
+
+## Adding Collectors to satellite hosts
+
+<!---- sar:
+sudo apt-get install sysstat
+(or)
+yum install sysstat
+(or)
+rpm -ivh sysstat-10.0.0-1.i586.rpm ----->
+
+
 
 ## Database Requirements
 

@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-# Sentry system check - disk 
+# Gardisto system check - disk space
 
-date +%Y%m%d%H%M >> /var/sentry/data/sendisk.data
-df -h | grep 100%\|[9][0-9]% >> /var/sentry/data/sendisk.data
-df -h | grep 100%\|[9][0-9]% |wc -l >> /var/sentry/data/sendisk.data
-
+date +%Y%m%d%H%M >> /var/gardisto/gardisk.data
+df -h | grep 100%\|[9][0-9]% >> /var/gardisto/gardisk.data
+df -h | grep 100%\|[9][0-9]% |wc -l >> /var/gardisto/gardisk.data
