@@ -2,7 +2,9 @@ import os
 import sqlite3
 import datetime
 # import sys (for sys.exit(1)
-from sentry import hostping, missingtable, notify
+from sentry import hostping, missingtable, notify, collect
+
+collthread = threading.Thread(target=collector)
 
 #connect this to your database with next 2 lines
 con = sqlite3.connect('/var/gardisto/sentry.db')
@@ -21,6 +23,10 @@ cursorObj = con.cursor()
 # parent TEXT NOT NULL,
 # status TEXT
 # );
+
+def collector():
+    collect.collect()
+
 
 def getlist():
     # get host list from database and convert to object python can read
@@ -88,5 +94,6 @@ if __name__ == "__main__":
     start()
 
 def start():
+    collthread.start()
     resultwrite()
     con.close()

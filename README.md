@@ -39,6 +39,10 @@ pip3 install --user -e .
 
 For notifications to work, the Gardisto server must have mutt configured and functioning. This package will not install or configure mutt.
 
+### Server Configuration
+
+The configuration is in the base gardisto directory from gitlab, and must be put in /var/gardisto of the server and all satellites.
+
 ## Adding Collectors to satellite hosts
 
 <!---- sar:
