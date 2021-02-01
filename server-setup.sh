@@ -17,4 +17,4 @@ chown -R gardisto:gardisto /var/gardisto
 # sed -i '1s/^[^=]*=//' gardisto.conf
 sed '1s/^[^=]*=//' gardisto.conf > /var/gardisto/gardisto.conf
 
-sed -i "s/[gardisto.server.ip]/$(hostname)" satellite-setup.sh
+sed -i "s/[gardisto.server.ip]/$(hostname)/g" satellite-setup.sh

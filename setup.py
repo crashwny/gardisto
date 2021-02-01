@@ -5,7 +5,7 @@ with open('README.md', 'r') as f:
 
 setup(
     name='Gardisto',
-    version='0.1.1',
+    version='0.2.1',
     author='Patrick M. Covert',
     author_email='pmcovert@buffaloist.com',
     description='A basic systems monitor utility',

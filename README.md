@@ -8,17 +8,6 @@ Utility for monitoring hosts/servers.
 To have Gardisto watch over your hosts after set up, add `gardisto run` to your crontab at your desired interval.
     For example, `1,11,21,31,41,51 * * * * gardisto run`
 
-The Gardisto server and each satellite host needs to have user 'gardisto', and satellites with their SSH key added and verified SSH access to Gardisto server. The central server should not have ssh keys on the satellites. Run the following commands as root:
- - `useradd -m -s /bin/bash gardisto`
- - `passwd gardisto` and enter password
-<!--- - add this line to /etc/sshd_config:
-    `Match User !root
-        PasswordAuthentication no` ---->
- - `mkdir -p /var/gardisto/collectors`
- - `chown -R gardisto:gardisto /var/gardisto`
- - and on the satellites, as user gardisto, `cd ~/.ssh; ssh-keygen -t rsa -b 4096 -f gardisto.rsa -N ""`
-   - then `ssh-add gardisto.rsa; ssh-copy-id gardisto@[gardisto.server.ip]`
-
 ### gardisto Maintenance Commands
  - `gardisto addhost` To add hosts for Gardisto to monitor
  - `gardisto removehost [-host hostname]`
@@ -41,7 +30,23 @@ For notifications to work, the Gardisto server must have mutt configured and fun
 
 ### Server Configuration
 
+The Gardisto server and each satellite host needs to have user 'gardisto', and satellites with their SSH key added and verified SSH access to Gardisto server. The central server should not have ssh keys on the satellites.
+ - Run this command as root on the server: `~/gardisto/server-setup.sh`
+   - Check /var/gardisto/gardisto to make sure that SERVER_FQDN is accessible on your network.
+ - Copy `~/gardisto/satellite-setup.py` to the satellite and run as root.
+
+<!---
+ - `useradd -m -s /bin/bash gardisto`
+ - `passwd gardisto` and enter password
+ - add this line to /etc/sshd_config:
+    `Match User !root
+        PasswordAuthentication no`
+ - `mkdir -p /var/gardisto/collectors`
+ - `chown -R gardisto:gardisto /var/gardisto`
+ - and on the satellites, as user gardisto, `cd ~/.ssh; ssh-keygen -t rsa -b 4096 -f gardisto.rsa -N ""`
+   - then `ssh-add gardisto.rsa; ssh-copy-id gardisto@[gardisto.server.ip]`
 The configuration is in the base gardisto directory from gitlab, and must be put in /var/gardisto of the server and all satellites.
+---->
 
 ## Adding Collectors to satellite hosts
 
