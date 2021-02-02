@@ -76,7 +76,7 @@ def updatestatus(host, status, date):
     else:
         if status == 1:
             command = 'UPDATE hosts SET status = "1", lastdown = "' + date + '" WHERE hostname = "' + host + '"'
-            notify.notify(host)
+            notify.notify(host, "down to ping")
         else:
             command = 'UPDATE hosts SET status = "0", lastup = "' + date + '" WHERE hostname = "' + host + '"'
     cursorObj.execute(command)
