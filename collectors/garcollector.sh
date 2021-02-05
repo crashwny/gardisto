@@ -13,7 +13,7 @@ done
 ls /var/gardisto/ |grep data |sed 's/ /\n/gp' > /tmp/datalist.txt
 for e in $(cat /tmp/datalist.txt)
 do
-  tail -1 /var/gardisto/$e > /tmp/$(hostname -s)$e
+  tail -1 /var/gardisto/$e > /tmp/$(hostname -s).$e
 done
 #scp file to gardisto host
 for a in $(ls /tmp/$(hostname -s)*)
