@@ -153,7 +153,7 @@ def ramcollect(ramfiles):
 def servicecollect(servicefiles):
     if servicefiles == []:
         return None
-    do stuff
+    print("Coming Soon")
 
 if __name__ == "__main__":
     collect()
