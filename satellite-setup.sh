@@ -12,9 +12,14 @@ fi
 if [ $(uname -a|grep el|wc -l) = 0 ]; then
 	# echo "using apt"
 	os_type="apt"
+	apt install sysstat
+	systemctl start sysstat
+	systemctl enable sysstat
+	sed -i s/'ENABLED="false"'/'ENABLED="true"'/ /etc/default/sysstat
 else
 	os_type="yum"
 	# echo "using yum"
+	yum install sysstat
 fi
 
 useradd -m -s /bin/bash gardisto
@@ -33,5 +38,12 @@ scp gardisto@gardisto.server.ip:/var/gardisto/gardisto.conf /var/gardisto/gardis
 '>/home/gardisto/setup2.sh
 
 chown gardisto:gardisto /home/gardisto/setup2.sh
+cp -r /tmp/collectors /var/gardisto/
+chown -R gardisto:gardisto /var/gardisto/collectors
 
-su gardisto -c "bash /home/gardisto/setup2.sh"
+# su gardisto -c "bash /home/gardisto/setup2.sh"
+clear
+echo "***********"
+echo "switch to user gardisto and run:"
+echo "bash /home/gardisto/setup2.sh"
+echo "***********"

@@ -26,4 +26,4 @@ read -p "Enter Gardisto's FQDN or IP address: " gardfqdn
 
 sed "s/SERVER_FQDN=/SERVER_FQDN=$gardfqdn/" gardisto.conf > /var/gardisto/gardisto.conf
 
-sed "s/gardisto.server.ip/$gardfqdn/" satellite-setup.sh
+sed -i "s/gardisto.server.ip/$gardfqdn/" satellite-setup.sh

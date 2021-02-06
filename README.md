@@ -32,8 +32,8 @@ For notifications to work, the Gardisto server must have mutt configured and fun
 
 The Gardisto server and each satellite host needs to have user 'gardisto', and satellites with their SSH key added and verified SSH access to Gardisto server. The central server should not have ssh keys on the satellites.
  - Run this command as root on the server: `~/gardisto/server-setup.sh`
-   - Check /var/gardisto/gardisto to make sure that SERVER_FQDN is accessible on your network.
- - Copy `~/gardisto/satellite-setup.py` to the satellite and run as root.
+ - Next, run this also as root: `scp -r satellite-setup.sh ./collectors username@satellitehostFQDN:/tmp/`
+
 
 <!---
  - `useradd -m -s /bin/bash gardisto`
@@ -49,6 +49,9 @@ The configuration is in the base gardisto directory from gitlab, and must be put
 ---->
 
 ## Adding Collectors to satellite hosts
+
+On the server, in /home/gardisto/gardisto, run as root: `scp -r satellite-setup.sh ./collectors username@satellitehostFQDN:/tmp/`
+Then on the satellite, as root, run: `/tmp/satellite-setup.sh` which afterwards will direct you to switch to user gardisto and run `~/bash setup2.sh`
 
 <!---- sar:
 sudo apt-get install sysstat
