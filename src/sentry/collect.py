@@ -2,10 +2,10 @@ import os
 import threading
 from gardisto import notify
 
-cputhread = threading.Thread(target=cpucollect args=(cpufiles))
-diskthread = threading.Thread(target=diskcollect args=(diskfiles))
-ramthread = threading.Thread(target=ramcollect args=(ramfiles))
-servicethread = threading.Thread(target=servicecollect args(servicefiles))
+cputhread = threading.Thread(target=cpucollect, args=(cpufiles))
+diskthread = threading.Thread(target=diskcollect, args=(diskfiles))
+ramthread = threading.Thread(target=ramcollect, args=(ramfiles))
+servicethread = threading.Thread(target=servicecollect, args(servicefiles))
 
 def collect():
     cpufiles = []
