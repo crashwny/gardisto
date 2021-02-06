@@ -10,11 +10,11 @@ else
 fi
 
 if [ $(uname -a|grep el|wc -l) = 0 ]; then
-	echo "using apt"
+	# echo "using apt"
 	os_type="apt"
 else
 	os_type="yum"
-	echo "using yum"
+	# echo "using yum"
 fi
 
 useradd -m -s /bin/bash gardisto
