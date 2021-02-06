@@ -1,6 +1,6 @@
 import os
 import threading
-from gardisto import notify
+from sentry import notify
 
 def collect():
     cpufiles = []
