@@ -2,11 +2,6 @@ import os
 import threading
 from gardisto import notify
 
-cputhread = threading.Thread(target=cpucollect, args=(cpufiles))
-diskthread = threading.Thread(target=diskcollect, args=(diskfiles))
-ramthread = threading.Thread(target=ramcollect, args=(ramfiles))
-servicethread = threading.Thread(target=servicecollect, args(servicefiles))
-
 def collect():
     cpufiles = []
     diskfiles = []
@@ -154,6 +149,11 @@ def servicecollect(servicefiles):
     if servicefiles == []:
         return None
     print("Coming Soon")
+
+cputhread = threading.Thread(target=cpucollect, args=(cpufiles))
+diskthread = threading.Thread(target=diskcollect, args=(diskfiles))
+ramthread = threading.Thread(target=ramcollect, args=(ramfiles))
+servicethread = threading.Thread(target=servicecollect, args=(servicefiles))
 
 if __name__ == "__main__":
     collect()
