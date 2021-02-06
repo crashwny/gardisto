@@ -9,12 +9,21 @@ else
   exit 1
 fi
 
+if [ $(uname -a|grep el|wc -l) = 0 ]; then
+	echo "using apt"
+	os_type="apt"
+else
+	os_type="yum"
+	echo "using yum"
+fi
+
 useradd -m -s /bin/bash gardisto
 passwd gardisto
 mkdir -p /var/gardisto/collectors
 chown -R gardisto:gardisto /var/gardisto
 
-# sed -i '1s/^[^=]*=//' gardisto.conf
-sed '1s/^[^=]*=//' gardisto.conf > /var/gardisto/gardisto.conf
+read -p "Enter Gardisto's FQDN or IP address: " gardfqdn
 
-sed -i "s/[gardisto.server.ip]/$(hostname)/g" satellite-setup.sh
+sed "s/SERVER_FQDN=/SERVER_FQDN=$gardfqdn/" gardisto.conf > /var/gardisto/gardisto.conf
+
+sed "s/gardisto.server.ip/$gardfqdn/" satellite-setup.sh

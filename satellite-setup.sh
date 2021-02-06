@@ -19,9 +19,9 @@ echo '#!/usr/bin/env bash
 mkdir ~/.ssh
 cd ~/.ssh; ssh-keygen -t rsa -b 4096 -f gardisto.rsa -N ""
 eval `ssh-agent -s`
-ssh-add gardisto.rsa; ssh-copy-id gardisto@[gardisto.server.ip]
+ssh-add gardisto.rsa; ssh-copy-id gardisto@gardisto.server.ip
 chmod 700 ~/.ssh
-scp gardisto@[gardisto.server.ip]:/var/gardisto/gardisto.conf /var/gardisto/gardisto.conf
+scp gardisto@gardisto.server.ip:/var/gardisto/gardisto.conf /var/gardisto/gardisto.conf
 '>/home/gardisto/setup2.sh
 
 chown gardisto:gardisto /home/gardisto/setup2.sh
