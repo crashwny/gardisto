@@ -1,6 +1,6 @@
 import sqlite3
 
-con = sqlite3.connect('/var/sentry/data/sentry.db')
+con = sqlite3.connect('/var/gardisto/sentry.db')
 cursorObj = con.cursor()
 
 def printdata():
@@ -24,8 +24,8 @@ def getdata(host):
         #    fqdn = somedata[5]
         #    site = somedata[6]
         #    parent = somedata[8]
-        #    sentryAdded = somedata[9]
-        #    sentryKeyAdded = somedata[10]
+        #    gardistoAdded = somedata[9]
+        #    gardistoKeyAdded = somedata[10]
         #    userAdded = somedata[11]
         #    userKeyAdded = somedata[12]
         return someData
@@ -48,8 +48,8 @@ def prettyPrint(host):
         print("FQDN:            ", somedata[5])
         print("Site:            ", somedata[6])
         print("Parent:          ", somedata[8])
-        print("Sentry Added:    ", somedata[9])
-        print("Sentry Key Added:", somedata[10])
+        print("Gardisto Added:    ", somedata[9])
+        print("Gardisto Key Added:", somedata[10])
         print("")
 
 def printmany():

@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 flask = "*"
-sentry = {editable = true, path = "."}
+gardisto = {editable = true, path = "."}
 
 [requires]
 python_version = "3.6"
