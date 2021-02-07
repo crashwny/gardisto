@@ -134,7 +134,7 @@ def ramcollect(ramfiles):
         filepath = "/var/gardisto/collectors/" + f
         fileobj = open(filepath, "r")
         data = str(fileobj.read())
-        data = data.split("\n")
+        data = data.split(" ")
         while("" in data):
             data.remove("")
         value = float(data[-1])
