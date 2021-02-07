@@ -20,6 +20,7 @@ fi
 useradd -m -s /bin/bash gardisto
 passwd gardisto
 mkdir -p /var/gardisto/collectors
+touch /var/gardisto/notify.log
 chown -R gardisto:gardisto /var/gardisto
 
 read -p "Enter Gardisto's FQDN or IP address: " gardfqdn
