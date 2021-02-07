@@ -32,10 +32,10 @@ def collect():
     #diskcollect(diskfiles)
     #ramcollect(ramfiles)
     #servicecollect(servicefiles)
-    cputhread()
-    diskthread()
-    ramthread()
-    servicethread()
+    cputhread.start()
+    diskthread.start()
+    ramthread.start()
+    servicethread.start()
 
 def cpucollect(cpufiles):
     # end thread if no cpu files
