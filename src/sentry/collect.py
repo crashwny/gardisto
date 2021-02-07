@@ -137,7 +137,9 @@ def ramcollect(ramfiles):
         data = data.split(" ")
         while("" in data):
             data.remove("")
-        value = float(data[-1])
+        totalswap = float(data[1])
+        usedswap = float(data[2])
+        value = usedswap / totalswap
         # get hostname
         hostname = f.split(".")
         hostname = hostname[0]
