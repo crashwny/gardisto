@@ -70,7 +70,7 @@ def cpucollect(cpufiles):
         if value > limit:
             return None
         else:
-            notify(hostname, "high CPU usage")
+            notify.notify(hostname, "high CPU usage")
         fileobj.close()
         # then delete the fileobj
         os.remove(filepath)
@@ -108,7 +108,7 @@ def diskcollect(diskfiles):
         if value < limit:
             return None
         else:
-            notify(hostname, "high disk usage")
+            notify.notify(hostname, "high disk usage")
         fileobj.close()
         # then delete the fileobj
         os.remove(filepath)
@@ -146,7 +146,7 @@ def ramcollect(ramfiles):
         if value < limit:
             return None
         else:
-            notify(hostname, "high memory usage")
+            notify.notify(hostname, "high memory usage")
         fileobj.close()
         # then delete the fileobj
         os.remove(filepath)

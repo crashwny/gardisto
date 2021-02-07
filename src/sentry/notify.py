@@ -1,4 +1,5 @@
 import os
+
 def notify(host, cause):
     f = open('/tmp/pingmsg.txt', 'w')
     log = open('/var/gardisto/notify.log')
