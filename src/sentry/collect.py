@@ -22,6 +22,12 @@ def collect():
             servicefiles.append(i)
         else:
             return None
+
+    cputhread = threading.Thread(target=cpucollect, args=(cpufiles))
+    diskthread = threading.Thread(target=diskcollect, args=(diskfiles))
+    ramthread = threading.Thread(target=ramcollect, args=(ramfiles))
+    servicethread = threading.Thread(target=servicecollect, args=(servicefiles))
+
     #cpucollect(cpufiles)
     #diskcollect(diskfiles)
     #ramcollect(ramfiles)
@@ -150,10 +156,6 @@ def servicecollect(servicefiles):
         return None
     print("Coming Soon")
 
-cputhread = threading.Thread(target=cpucollect, args=(cpufiles))
-diskthread = threading.Thread(target=diskcollect, args=(diskfiles))
-ramthread = threading.Thread(target=ramcollect, args=(ramfiles))
-servicethread = threading.Thread(target=servicecollect, args=(servicefiles))
 
 if __name__ == "__main__":
     collect()
