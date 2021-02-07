@@ -23,6 +23,13 @@ mkdir -p /var/gardisto/collectors
 touch /var/gardisto/notify.log
 chown -R gardisto:gardisto /var/gardisto
 
+if [ $os_type = "apt" ]; then
+	apt install git
+else
+	yum install git
+
+su gardisto "cd /home/gardisto/ ;git clone http://173.64.3.56:65524/gitlab/patrick/gardisto.git"
+
 read -p "Enter Gardisto's FQDN or IP address: " gardfqdn
 
 sed "s/SERVER_FQDN=/SERVER_FQDN=$gardfqdn/" gardisto.conf > /var/gardisto/gardisto.conf
