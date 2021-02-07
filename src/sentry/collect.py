@@ -28,14 +28,14 @@ def collect():
     ramthread = threading.Thread(target=ramcollect, args=(ramfiles))
     servicethread = threading.Thread(target=servicecollect, args=(servicefiles))
 
-    #cpucollect(cpufiles)
-    #diskcollect(diskfiles)
-    #ramcollect(ramfiles)
-    #servicecollect(servicefiles)
-    cputhread.start()
-    diskthread.start()
-    ramthread.start()
-    servicethread.start()
+    cpucollect(cpufiles)
+    diskcollect(diskfiles)
+    ramcollect(ramfiles)
+    servicecollect(servicefiles)
+    #cputhread.start()
+    #diskthread.start()
+    #ramthread.start()
+    #servicethread.start()
 
 def cpucollect(cpufiles):
     # end thread if no cpu files
