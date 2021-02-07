@@ -5,8 +5,6 @@ import threading
 # import sys (for sys.exit(1)
 from sentry import hostping, missingtable, notify, collect
 
-collthread = threading.Thread(target=collector)
-
 #connect this to your database with next 2 lines
 con = sqlite3.connect('/var/gardisto/sentry.db')
 cursorObj = con.cursor()
@@ -28,6 +26,7 @@ cursorObj = con.cursor()
 def collector():
     collect.collect()
 
+collthread = threading.Thread(target=collector)
 
 def getlist():
     # get host list from database and convert to object python can read
