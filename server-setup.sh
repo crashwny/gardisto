@@ -27,8 +27,9 @@ if [ $os_type = "apt" ]; then
 	apt install git
 else
 	yum install git
+fi
 
-su gardisto "cd /home/gardisto/ ;git clone http://173.64.3.56:65524/gitlab/patrick/gardisto.git"
+su gardisto "cd /home/gardisto/ ;git clone https://github.com/crashwny/gardisto.git"
 
 read -p "Enter Gardisto's FQDN or IP address: " gardfqdn
 
