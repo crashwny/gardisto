@@ -1,11 +1,12 @@
 import os
 import sqlite3
 import datetime
+import threading
 # import sys (for sys.exit(1)
-from sentry import hostping, missingtable, notify
+from sentry import hostping, missingtable, notify, collect
 
 #connect this to your database with next 2 lines
-con = sqlite3.connect('/var/sentry/data/sentry.db')
+con = sqlite3.connect('/var/gardisto/sentry.db')
 cursorObj = con.cursor()
 
 # this block is to remind me of the database fields
@@ -21,6 +22,11 @@ cursorObj = con.cursor()
 # parent TEXT NOT NULL,
 # status TEXT
 # );
+
+def collector():
+    collect.collect()
+
+collthread = threading.Thread(target=collector)
 
 def getlist():
     # get host list from database and convert to object python can read
@@ -69,7 +75,7 @@ def updatestatus(host, status, date):
     else:
         if status == 1:
             command = 'UPDATE hosts SET status = "1", lastdown = "' + date + '" WHERE hostname = "' + host + '"'
-            notify.notify(host)
+            notify.notify(host, "down to ping")
         else:
             command = 'UPDATE hosts SET status = "0", lastup = "' + date + '" WHERE hostname = "' + host + '"'
     cursorObj.execute(command)
@@ -88,6 +94,6 @@ if __name__ == "__main__":
     start()
 
 def start():
+    collthread.start()
     resultwrite()
     con.close()
-

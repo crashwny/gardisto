@@ -16,6 +16,7 @@ def create_parser():
 def main():
     from sentry import hostentry, hostping, hostcheck, removehost, edithost
     args = create_parser().parse_args()
+
     #print(args.toDo)
     #print(args.host)
     #print(args.allhost)
