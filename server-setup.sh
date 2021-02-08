@@ -23,8 +23,25 @@ mkdir -p /var/gardisto/collectors
 touch /var/gardisto/notify.log
 chown -R gardisto:gardisto /var/gardisto
 
+if [ $os_type = "apt" ]; then
+	apt install git -y
+	apt install zip -y
+else
+	yum install git -y
+	yum install zip -y
+fi
+
+cd /tmp
+wget https://github.com/crashwny/gardisto/archive/main.zip
+unzip main.zip
+mv gardisto-main/ /home/gardisto/
+cd /home/gardisto/gardisto-main/
+chown -R gardisto:gardisto /home/gardisto/gardisto-main/
+
 read -p "Enter Gardisto's FQDN or IP address: " gardfqdn
 
 sed "s/SERVER_FQDN=/SERVER_FQDN=$gardfqdn/" gardisto.conf > /var/gardisto/gardisto.conf
 
 sed -i "s/gardisto.server.ip/$gardfqdn/" satellite-setup.sh
+
+runuser -l gardisto -c 'pip3 install --user -e /home/gardisto/gardisto-main/'
