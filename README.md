@@ -8,6 +8,9 @@ Utility for monitoring hosts/servers.
 To have Gardisto watch over your hosts after set up, add `gardisto run` to your crontab at your desired interval.
     For example, `1,11,21,31,41,51 * * * * gardisto run`
 
+On the Satellite hosts, add `/var/gardisto/collectors/collector.sh` to your crontab.
+    For example, `1,11,21,31,41,51 * * * * /var/gardisto/collectors/collector.sh`
+
 ### gardisto Maintenance Commands
  - `gardisto addhost` To add hosts for Gardisto to monitor
  - `gardisto removehost [-host hostname]`
@@ -33,7 +36,7 @@ The configuration file is found in /var/gardisto/gardisto.conf.
 On the server, in /home/gardisto/gardisto, run as root: `scp -r satellite-setup.sh ./collectors username@satellitehostFQDN:/tmp/`
 Then on the satellite, as root, run: `/tmp/satellite-setup.sh` which afterwards will direct you to switch to user gardisto and run `~/bash setup2.sh`
 
-
+Once the installation scripts are done, navigate to /var/gardisto/collectors/ and finish configuring the desired checks. You can run the individual gar* scripts to make sure your host handles them properly. If you do not wish to run a particular script, you can rm that script. If you want Gardisto to monitor a particular service, you must edit garservice.sh appropriately. there are a small number of prewritten checks for common services, which you can uncomment to run. Or, write your own line following the same pattern as the rest. 
 
 <!---- sar:
 sudo apt-get install sysstat
@@ -75,6 +78,6 @@ Follow these steps to start developing with this project:
 1. Ensure `pip` and `pipenv` are installed
 2. Clone repository: `http://173.64.3.56:65524/gitlab/patrick/gardisto`
 3. `cd` into the repository
-4. `git checkout dev` 
+4. `git checkout dev`
 5. Activate virtualenv: `pipenv shell`
 6. Install dependencies: `pipenv install`
