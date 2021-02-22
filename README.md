@@ -1,7 +1,6 @@
 Gardisto
 ======
-
-Utility for monitoring hosts/servers.
+Formerly known as sentry-public, Gardisto is a utility for monitoring hosts/servers.
 
 ## Usage
 
@@ -78,6 +77,6 @@ Follow these steps to start developing with this project:
 1. Ensure `pip` and `pipenv` are installed
 2. Clone repository: `http://173.64.3.56:65524/gitlab/patrick/gardisto`
 3. `cd` into the repository
-4. `git checkout dev`
+4. `git checkout dev` 
 5. Activate virtualenv: `pipenv shell`
 6. Install dependencies: `pipenv install`
