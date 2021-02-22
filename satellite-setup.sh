@@ -35,6 +35,7 @@ eval `ssh-agent -s`
 ssh-add gardisto.rsa; ssh-copy-id gardisto@gardisto.server.ip
 chmod 700 ~/.ssh
 scp gardisto@gardisto.server.ip:/var/gardisto/gardisto.conf /var/gardisto/gardisto.conf
+scp gardisto@gardisto.server.ip:/home/gardisto/gardisto/collectors/* /var/gardisto/collectors/
 '>/home/gardisto/setup2.sh
 
 chown gardisto:gardisto /home/gardisto/setup2.sh
