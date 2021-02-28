@@ -20,30 +20,23 @@ def enterdata():
     print("\n Remember to add ssh keys for Gardisto to access your hosts!\n ")
     return entrydata
 
-def processdata():
-    entrydata = enterdata()
+def processdata(hostData):
     try:
-        cursorObj.execute('''INSERT INTO hosts(hostname, IP, fqdn, site, type, parent) VALUES(?, ?, ?, ?, ?, ?)''', entrydata)
+        cursorObj.execute('''INSERT INTO hosts(hostname, IP, fqdn, site, type, parent) VALUES(?, ?, ?, ?, ?, ?)''', hostData)
         con.commit()
     except sqlite3.OperationalError:
         missingtable.create()
-        cursorObj.execute('''INSERT INTO hosts(hostname, IP, fqdn, site, type, parent) VALUES(?, ?, ?, ?, ?, ?)'''    , entrydata)
+        cursorObj.execute('''INSERT INTO hosts(hostname, IP, fqdn, site, type, parent) VALUES(?, ?, ?, ?, ?, ?)'''    , hostData)
         con.commit()
     print("Data Inserted")
     printdata.printdata()
     print(" \n  ")
+
+if __name__ == "__main__":
+    os.system('clear')
+    processdata(enterdata())
     more = input("Would you like to add another host? (y or n) \n")
     if more == "y":
         processdata()
     else:
         None
-
-#def printdata():
-#    cursorObj.execute('SELECT * FROM hosts')
-#    rows = cursorObj.fetchall()
-#    for row in rows:
-#        print(row)
-
-if __name__ == "__main__":
-    os.system('clear')
-    processdata()

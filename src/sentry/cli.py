@@ -11,6 +11,7 @@ def create_parser():
     parser.add_argument('-all', dest="allhost", action="store_true", help="Use all hosts for desired action")
     parser.add_argument('-stat', action="store", dest="stat", help="Enter a specific statistic to check")
     parser.add_argument('-stats', action="store_true", help="Run check with all statistics")
+    parser.add_argument('-script', action="store", dest="scriptJson")
     return parser
 
 def main():
@@ -49,6 +50,11 @@ def main():
         else:
             showstats.oneStat(stat)
             sys.exit()
+    if args.toDo == 'scriptEntry':
+        scriptrun()
+        sys.exit()
+
+
     else:
         print("Please use an argument")
         sys.exit()

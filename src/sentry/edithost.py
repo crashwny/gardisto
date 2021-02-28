@@ -1,4 +1,5 @@
 # edit a host's db entry
+
 import sqlite3
 from sentry import missingtable
 con = sqlite3.connect('/var/gardisto/sentry.db')
@@ -39,6 +40,7 @@ def oneHost(host):
     5: Parent Host
     6: Gardisto User Added y/n?
     7: Gardisto Key Added y/n?
+    8: Snooze Host
 
     ''')
     choice = input("Enter the number:\n")
@@ -70,14 +72,27 @@ def oneHost(host):
             newdata = "1"
         else:
             newdata = "0"
-    else:
+    elif choice == "7":
         field = "gardistoKeyAdded"
         newdata = input("Has the Gardisto user's key been added? (y or n)\n")
         if newdata == "y":
             newdata = 1
         else:
             newdata = 0
+    elif choice == "8":
+        field = "snooze"
+        newdata = input("Snooze on or off? \n")
+        if newdata is "on":
+            newdata = 1
+        else:
+            newdata = 0
+    else:
+        print("Please Make A Valid Selection")
+        oneHost(host)
 
+    processData(host, field, newdata)
+
+def processData(host, field, newdata):
     command = 'UPDATE hosts SET ' + field + ' = "' + newdata + '" WHERE hostname = "' + host + '"'
     #print(command)
     cursorObj.execute(command)
