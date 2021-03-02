@@ -1,4 +1,4 @@
-import os
+import os, configparser
 
 def notify(host, cause):
     f = open('/tmp/pingmsg.txt', 'w')
@@ -16,10 +16,16 @@ def notify(host, cause):
         log.write("-")
         log.write(cause)
         log.write("\n")
-        os.system("mutt -s 'Ping Check' pmcovert@buffaloist.com < /tmp/pingmsg.txt")
+        os.system("mutt -s 'Ping Check' " + getEmailAddress() + " < /tmp/pingmsg.txt")
 
 def checkForSnooze(hostName):
     con = sqlite3.connect('/var/gardisto/sentry.db')
     cursorObj = con.cursor()
     snooze = cursorObj.execute('SELECT snooze FROM hosts WHERE hostname IS "' + hostName + '";')
     return snooze
+
+def getEmailAddress():
+    config = configparser.ConfigParser()
+    config.read('/var/gardisto/gardisto.conf')
+    emailAddress = config['DEFAULT']['NOTIFY_EMAIL']
+    return emailAddress
