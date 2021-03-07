@@ -92,7 +92,7 @@ def resultwrite():
 
 def start():
     #collthread.start()
-    collect()
+    collect.getAllColl()
     resultwrite()
     con.close()
 
