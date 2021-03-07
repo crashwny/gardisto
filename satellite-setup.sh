@@ -16,6 +16,7 @@ if [ $(uname -a|grep el|wc -l) = 0 ]; then
 	systemctl start sysstat
 	systemctl enable sysstat
 	sed -i s/'ENABLED="false"'/'ENABLED="true"'/ /etc/default/sysstat
+    systemctl restart sysstat
 else
 	os_type="yum"
 	# echo "using yum"
@@ -39,12 +40,14 @@ scp gardisto@gardisto.server.ip:/home/gardisto/gardisto/collectors/* /var/gardis
 scp gardisto@gardisto.server.ip:/home/gardisto/gardisto/satellite-hostentry.sh /var/gardisto/
 sleep 10
 bash /var/gardisto/satellite-hostentry.sh
+
 '>/home/gardisto/setup2.sh
+
 
 chown gardisto:gardisto /home/gardisto/setup2.sh
 cp -r /tmp/collectors /var/gardisto/
 chown -R gardisto:gardisto /var/gardisto/collectors
-
+echo 'eval `ssh-agent -s` && ssh-add ~/.ssh/gardisto.rsa'>>/home/gardisto/.bashrc
 # su gardisto -c "bash /home/gardisto/setup2.sh"
 clear
 echo "***********"
