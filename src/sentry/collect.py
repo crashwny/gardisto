@@ -14,7 +14,7 @@ def getAllColl():
     for i in fList:
         filepath = str("/var/gardisto/collectors/" + i[0] + "." + i[1] + "." + i[2])
         hostname = i[0]
-        test = i[1].strip("gar")
+        test = i[1].replace("gar", "")
         if test in config["SERVER"]:
             limit = float(config['SERVER'][test])
         else:
