@@ -39,8 +39,9 @@ def getAllColl():
         else:
             value = data
         if value > limit:
-            return 0
-        else: notify.notify()
+            None
+        else:
+            notify.notify()
         os.remove(filepath)
 
 if __name__ == "__main__":
