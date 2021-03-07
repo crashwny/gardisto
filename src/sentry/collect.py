@@ -34,7 +34,7 @@ def getAllColl():
             while("" in data):
                 data.remove("")
             print(data)
-            value = float(data[-2])
+            value = float(data[-1])
         else:
             value = float(data)
         if value > limit:
