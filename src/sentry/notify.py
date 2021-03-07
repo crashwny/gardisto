@@ -27,5 +27,5 @@ def checkForSnooze(hostName):
 def getEmailAddress():
     config = configparser.ConfigParser()
     config.read('/var/gardisto/gardisto.conf')
-    emailAddress = config['DEFAULT']['NOTIFY_EMAIL']
+    emailAddress = config['SERVER']['NOTIFY_EMAIL']
     return emailAddress
