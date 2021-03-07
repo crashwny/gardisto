@@ -23,14 +23,15 @@ def getAllColl():
             limit = 1
         fileObj = open(filepath, "r")
         data = fileObj.read()
-        if test = "ram":
+        fileObj.close()
+        if test == "ram":
             data = data.split(" ")
             while("" in data):
                 data.remove("")
             totalswap = float(data[1])
             usedswap = float(data[2])
             value = usedswap / totalswap
-        elif test = "cpu":
+        elif test == "cpu":
             data = data.split(" ")
             while("" in data):
                 data.remove("")
