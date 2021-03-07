@@ -24,9 +24,9 @@ cursorObj = con.cursor()
 # );
 
 def collector():
-    sentry.collect()
+    collect()
 
-collthread = threading.Thread(target=collector)
+collthread = threading.Thread(target=collect())
 
 def getlist():
     # get host list from database and convert to object python can read
@@ -90,10 +90,10 @@ def resultwrite():
     for a, b in resultlist:
         updatestatus(a, b, timenow)
 
-if __name__ == "__main__":
-    start()
-
 def start():
     collthread.start()
     resultwrite()
     con.close()
+
+if __name__ == "__main__":
+    start()
