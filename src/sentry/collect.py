@@ -1,6 +1,4 @@
-import os
-import threading
-import configparser
+import os, threading, configparser
 from sentry import notify
 
 configFile = "/var/gardisto/gardisto.conf"

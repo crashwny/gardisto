@@ -1,4 +1,4 @@
-import os, configparser
+import os, configparser, sqlite3
 
 def notify(host, cause):
     f = open('/tmp/pingmsg.txt', 'w')
