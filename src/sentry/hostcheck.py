@@ -91,7 +91,8 @@ def resultwrite():
         updatestatus(a, b, timenow)
 
 def start():
-    collthread.start()
+    #collthread.start()
+    collect()
     resultwrite()
     con.close()
 
