@@ -24,7 +24,7 @@ cursorObj = con.cursor()
 # );
 
 def collector():
-    collect.collect()
+    collect()
 
 collthread = threading.Thread(target=collector)
 
