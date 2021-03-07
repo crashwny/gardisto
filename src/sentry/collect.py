@@ -41,7 +41,7 @@ def getAllColl():
         if value > limit:
             None
         else:
-            notify.notify()
+            notify.notify(hostname, test)
         os.remove(filepath)
 
 if __name__ == "__main__":
