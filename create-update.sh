@@ -3,6 +3,6 @@
 
 mkdir -p /tmp/update-package/collectors
 cp ~/gardisto/collectors/* /tmp/update-package/collectors/
-cp /var/gardisto/gardisto.conf
+cp /var/gardisto/gardisto.conf /tmp/update-package/
 
 tar -czf /var/gardisto/update-package.tar.gz /tmp/update-package
