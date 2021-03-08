@@ -17,10 +17,14 @@ if [ $(uname -a|grep el|wc -l) = 0 ]; then
 	systemctl enable sysstat
 	sed -i s/'ENABLED="false"'/'ENABLED="true"'/ /etc/default/sysstat
     systemctl restart sysstat
+    apt install lm-sensors
 else
 	os_type="yum"
 	# echo "using yum"
 	yum install sysstat
+    systemctl start sysstat
+	systemctl enable sysstat
+    yum install lm_sensors
 fi
 
 useradd -m -s /bin/bash gardisto
