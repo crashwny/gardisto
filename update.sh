@@ -28,6 +28,7 @@ else
 fi
 
 serverfqdn=$(cat /var/gardisto/gardisto.conf|grep SERVER_FQDN|sed 's/^[^=]*=//')
+serverfqdn=$(echo $serverfqdn|sed 's/ //g')
 
 echo "#!/usr/bin/env bash
 # Gardisto Satellite Update Script Part 2
