@@ -16,9 +16,12 @@ def getAllColl():
         hostname = i[0]
         test = i[1].replace("gar", "")
         if test in config["SERVER"]:
-            limit = float(config['SERVER'][test])
+            try:
+                limit = float(config['SERVER'][test])
+            except:
+                limit = float(0)
         else:
-            limit = 1
+            limit = float(1)
         fileObj = open(filepath, "r")
         data = fileObj.read()
         fileObj.close()
