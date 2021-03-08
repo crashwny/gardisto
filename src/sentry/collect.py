@@ -39,7 +39,10 @@ def getAllColl():
             print(data)
             value = float(data[-1])
         else:
-            value = float(data)
+            try:
+                value = float(data)
+            except:
+                value = float(0)
         if value > limit:
             None
         else:
