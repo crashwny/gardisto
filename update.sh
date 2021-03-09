@@ -32,10 +32,10 @@ serverfqdn=$(echo $serverfqdn|sed 's/ //g')
 
 echo "#!/usr/bin/env bash
 # Gardisto Satellite Update Script Part 2
-scp gardisto@$serverfqdn:/var/gardisto/update-package.tar.gz /var/gardisto/
-tar -xzf /var/gardisto/update-package.tar.gz
-mv -f /var/gardisto/update-package/gardisto.conf /var/gardisto/gardisto.conf
-mv -f /var/gardisto/update-package/collectors/* /var/gardisto/collectors/
+scp gardisto@$serverfqdn:/var/gardisto/update-package.tar.gz /tmp/gardisto/
+tar -xzf /tmp/gardisto/update-package.tar.gz /tmp/update-package/
+mv -f /tmp/update-package/gardisto.conf /var/gardisto/gardisto.conf
+mv -f /tmp/update-package/collectors/* /var/gardisto/collectors/
 
 ">/home/gardisto/update2.sh
 
