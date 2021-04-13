@@ -43,6 +43,6 @@ read -p "Enter an email address for notifications: " gardEmail
 sed "s/SERVER_FQDN=/SERVER_FQDN = $gardfqdn/" gardisto.conf > /var/gardisto/gardisto.conf
 sed -i "s/NOTIFY_EMAIL=/NOTIFY_EMAIL = $gardEmail/" /var/gardisto/gardisto.conf
 
-sed -i "s/gardisto.server.ip/$gardfqdn/" satellite-setup.sh
+sed -i "s/gardisto.server.ip/$gardfqdn/g" satellite-setup.sh
 
 runuser -l gardisto -c 'pip3 install --user -e /home/gardisto/gardisto/'
