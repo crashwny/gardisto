@@ -1,4 +1,4 @@
-import os, configparser
+import os, configparser, sqlite3
 
 def notify(host, cause):
     f = open('/tmp/pingmsg.txt', 'w')
@@ -27,5 +27,5 @@ def checkForSnooze(hostName):
 def getEmailAddress():
     config = configparser.ConfigParser()
     config.read('/var/gardisto/gardisto.conf')
-    emailAddress = config['DEFAULT']['NOTIFY_EMAIL']
+    emailAddress = config['SERVER']['NOTIFY_EMAIL']
     return emailAddress

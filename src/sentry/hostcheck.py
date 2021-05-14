@@ -22,12 +22,12 @@ cursorObj = con.cursor()
 # parent TEXT NOT NULL,
 # status TEXT
 # );
-
+"""
 def collector():
-    collect.collect()
+    collect()
 
-collthread = threading.Thread(target=collector)
-
+collthread = threading.Thread(target=collect())
+"""
 def getlist():
     # get host list from database and convert to object python can read
     cursorObj.execute('SELECT hostname, ip FROM hosts')
@@ -90,10 +90,11 @@ def resultwrite():
     for a, b in resultlist:
         updatestatus(a, b, timenow)
 
-if __name__ == "__main__":
-    start()
-
 def start():
-    collthread.start()
+    #collthread.start()
+    collect.getAllColl()
     resultwrite()
     con.close()
+
+if __name__ == "__main__":
+    start()
