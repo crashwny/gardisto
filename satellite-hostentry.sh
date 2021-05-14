@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # calls home to enter host into Gardisto database for monitoring
 
-serverFQDN=$(cat /var/gardisto/gardisto.conf |grep SERVER_FQDN|sed 's/SERVER_FQDN='//)
+serverFQDN=$(cat /var/gardisto/gardisto.conf |grep SERVER_FQDN|sed 's/SERVER_FQDN = '//)
 
 hostData='{}'
 
