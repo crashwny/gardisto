@@ -32,7 +32,7 @@ else
 fi
 
 checkpip=$(which pip3|grep "no pip3")
-if [ $checkpip < 0 ]; then
+if [ $checkpip > 0 ]; then
     if [ $os_type = "apt" ]; then
     	apt install python3-pip -y
     else
