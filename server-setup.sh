@@ -41,8 +41,8 @@ if [ $checkpip > 0 ]; then
 fi
 
 cd /tmp
-wget https://github.com/crashwny/gardisto/archive/main.zip
-unzip main.zip
+wget http://173.64.1.227:65524/gitlab/patrick/gardisto/-/archive/main/gardisto-main.zip
+unzip gardisto-main.zip
 mv gardisto-main /home/gardisto/gardisto
 cd /home/gardisto/gardisto/
 chown -R gardisto:gardisto /home/gardisto/gardisto/
