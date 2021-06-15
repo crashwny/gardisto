@@ -32,7 +32,7 @@ def processdata(hostData):
     printdata.printdata()
     print(" \n  ")
 
-if __name__ == "__main__":
+def start():
     os.system('clear')
     processdata(enterdata())
     more = input("Would you like to add another host? (y or n) \n")
@@ -40,3 +40,6 @@ if __name__ == "__main__":
         processdata()
     else:
         None
+
+if __name__ == "__main__":
+    start()

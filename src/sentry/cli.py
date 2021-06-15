@@ -15,7 +15,7 @@ def create_parser():
     return parser
 
 def main():
-    from sentry import hostentry, hostping, hostcheck, removehost, edithost
+    from sentry import hostentry, hostping, hostcheck, removehost, edithost, scriptrun
     args = create_parser().parse_args()
 
     #print(args.toDo)
@@ -24,7 +24,7 @@ def main():
     #print(args.stat)
     #print(args.stats)
     if args.toDo == 'addhost':
-        hostentry.processdata()
+        hostentry.start()
         sys.exit()
     if args.toDo == 'run':
         hostcheck.start()
