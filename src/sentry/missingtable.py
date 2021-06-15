@@ -19,7 +19,8 @@ def create():
         gardistoKeyAdded BOOLEAN NOT NULL default '0',
         userAdded BOOLEAN NOT NULL default '0',
         userKeyAdded BOOLEAN NOT NULL default '0',
-        snooze BOOLEAN NOT NULL default '0'
+        snooze BOOLEAN NOT NULL default '0',
+        details TEXT
         );''')
         cursorObj.execute('''CREATE VIEW status_view AS SELECT hostname AS "Hostname", status AS "is down?", lastup AS "Last up", lastdown AS "Last down" FROM hosts;''')
         con.commit()
