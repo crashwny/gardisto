@@ -35,5 +35,4 @@ def from_cli():
     f.close()
 
 if __name__ == "__main__":
-    from_cli():
-    return 0
+    from_cli()

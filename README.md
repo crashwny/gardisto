@@ -33,7 +33,7 @@ The configuration file is found in /var/gardisto/gardisto.conf.
 
 ## Adding Collectors to satellite hosts
 
-On the server, in /home/gardisto/gardisto, run as root: `scp -r satellite-setup.sh ./collectors username@satellitehostFQDN:/tmp/`
+On the server, run as root: `scp -r /home/gardisto/gardisto/satellite-setup.sh /home/gardisto/gardisto/collectors username@satellitehostFQDN:/tmp/`
 Then on the satellite, as root, run: `/tmp/satellite-setup.sh` which afterwards will direct you to switch to user gardisto and run `~/bash setup2.sh`
 
 Once the installation scripts are done, navigate to /var/gardisto/collectors/ and finish configuring the desired checks. You can run the individual gar* scripts to make sure your host handles them properly. If you do not wish to run a particular script, you can rm that script. If you want Gardisto to monitor a particular service, you must edit garservice.sh appropriately. there are a small number of prewritten checks for common services, which you can uncomment to run. Or, write your own line following the same pattern as the rest.
