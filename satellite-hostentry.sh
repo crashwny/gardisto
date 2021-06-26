@@ -27,7 +27,7 @@ echo "{
         }">/tmp/garadd-$data1.json
 
 scp /tmp/garadd-$data1.json gardisto@$serverFQDN:/tmp/
-ssh gardisto@$serverFQDN "gardisto scriptEntry"
+ssh gardisto@$serverFQDN "$HOME/.local/bin/gardisto scriptEntry"
 
 #class Host:
 #    def __init__(self):
