@@ -1,10 +1,9 @@
 import os, threading, configparser
 from sentry import notify
 
-configFile = "/var/gardisto/gardisto.conf"
-config = configparser.ConfigParser()
-
 def getAllColl():
+    configFile = "/var/gardisto/gardisto.conf"
+    config = configparser.ConfigParser()
     fpath = '/var/gardisto/collectors/'
     flist = os.listdir(path=fpath)
     fList = []

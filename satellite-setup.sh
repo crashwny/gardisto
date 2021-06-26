@@ -9,6 +9,8 @@ else
   exit 1
 fi
 
+export PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin
+
 if [ $(uname -a|grep el|wc -l) = 0 ]; then
 	# echo "using apt"
 	os_type="apt"
@@ -16,15 +18,15 @@ if [ $(uname -a|grep el|wc -l) = 0 ]; then
 	systemctl start sysstat
 	systemctl enable sysstat
 	sed -i s/'ENABLED="false"'/'ENABLED="true"'/ /etc/default/sysstat
-    systemctl restart sysstat
-    apt install lm-sensors
+  systemctl restart sysstat
+  apt install lm-sensors
 else
 	os_type="yum"
 	# echo "using yum"
 	yum install sysstat
-    systemctl start sysstat
+  systemctl start sysstat
 	systemctl enable sysstat
-    yum install lm_sensors
+  yum install lm_sensors
 fi
 
 useradd -m -s /bin/bash gardisto
