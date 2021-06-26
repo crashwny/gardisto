@@ -23,7 +23,7 @@ On the Satellite hosts, add `/var/gardisto/collectors/collector.sh` to your cron
 
 ## Installation from source
 
-From a clean install, run as root, `wget https://raw.githubusercontent.com/crashwny/gardisto/main/server-setup.sh` then `bash server-setup.sh`. You will have to input a password for the gardisto user and enter the FQDN or IP address that the gardisto server can be reached by satellite servers.
+From a clean install, run as root, `wget http://173.64.1.227:65524/gitlab/patrick/gardisto/raw/dev/server-setup.sh` then `bash server-setup.sh`. You will have to input a password for the gardisto user and enter the FQDN or IP address that the gardisto server can be reached by satellite servers.
 
 For notifications to work, the Gardisto server must have mutt configured and functioning. This package will not install or configure mutt. Normally mutt can be installed with `apt install -y sendmail mutt` or `yum install -y sendmail mutt` and then in the gardisto hone folder, create a `.muttrc` configuration file, and google help to set it up for your email provider.  
 
@@ -77,7 +77,7 @@ snooze BOOLEAN NOT NULL default '0';
 Follow these steps to start developing with this project:
 
 1. Ensure `pip` and `pipenv` are installed
-2. Clone repository: `http://173.64.3.56:65524/gitlab/patrick/gardisto`
+2. Clone repository: `http://173.64.1.227:65524/gitlab/patrick/gardisto`
 3. `cd` into the repository
 4. `git checkout dev`
 5. Activate virtualenv: `pipenv shell`
