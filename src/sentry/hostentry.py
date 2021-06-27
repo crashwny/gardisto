@@ -28,7 +28,7 @@ def processdata(hostData):
         con.commit()
     except sqlite3.OperationalError:
         missingtable.create()
-        cursorObj.execute('''INSERT INTO hosts(hostname, IP, fqdn, site, type, parent) VALUES(?, ?, ?, ?, ?, ?)'''    , hostData)
+        cursorObj.execute('''INSERT INTO hosts(hostname, IP, fqdn, site, type, parent) VALUES(?, ?, ?, ?, ?, ?)''', hostData)
         con.commit()
     print("Data Inserted")
     printdata.printdata()
@@ -54,7 +54,8 @@ def script():
             newData.close()
 
 def jsonparse(jdata):
-    entrydata = (jdata[hostname], jdata[IP], jdata[fqdn], site, hostType, parent)
+    entrydata = (jdata["hostname"], jdata["ip"], jdata["fqdn"], "0", "0", "0")
+    return entrydata
 
 if __name__ == "__main__":
     start()
