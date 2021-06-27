@@ -2,6 +2,8 @@ import subprocess
 import os
 import sqlite3
 import time
+import re
+import json
 from sentry import missingtable, printdata
 con = sqlite3.connect('/var/gardisto/sentry.db')
 cursorObj = con.cursor()
@@ -40,6 +42,15 @@ def start():
         processdata()
     else:
         None
+
+def script():
+    newHosts = os.listdir('/tmp')
+    for i in newHosts:
+        if re.match('garadd*', i):
+            newData = open("/tmp/" + i, "r")
+            newdata = json.loads(newData.read())
+            processdata(newdata)
+            newData.close()
 
 if __name__ == "__main__":
     start()
