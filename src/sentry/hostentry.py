@@ -49,8 +49,12 @@ def script():
         if re.match('garadd*', i):
             newData = open("/tmp/" + i, "r")
             newdata = json.loads(newData.read())
-            processdata(newdata)
+            data = jsonparse(newdata)
+            processdata(data)
             newData.close()
+
+def jsonparse(jdata):
+    entrydata = (jdata[hostname], jdata[IP], jdata[fqdn], site, hostType, parent)
 
 if __name__ == "__main__":
     start()
