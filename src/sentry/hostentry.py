@@ -54,7 +54,7 @@ def script():
             newData.close()
 
 def jsonparse(jdata):
-    entrydata = (jdata["hostname"], jdata["ip"], jdata["fqdn"], site, hostType, parent)
+    entrydata = (jdata["hostname"], jdata["ip"], jdata["fqdn"], "0", "0", "0")
 
 if __name__ == "__main__":
     start()
