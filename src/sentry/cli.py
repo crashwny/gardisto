@@ -51,7 +51,7 @@ def main():
             showstats.oneStat(stat)
             sys.exit()
     if args.toDo == 'scriptEntry':
-        scriptrun()
+        hostentry.script()
         sys.exit()
 
 
