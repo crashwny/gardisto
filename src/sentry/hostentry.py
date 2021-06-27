@@ -55,6 +55,7 @@ def script():
 
 def jsonparse(jdata):
     entrydata = (jdata["hostname"], jdata["ip"], jdata["fqdn"], "0", "0", "0")
-
+    return entrydata
+    
 if __name__ == "__main__":
     start()
