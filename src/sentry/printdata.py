@@ -15,19 +15,8 @@ def getdata(host):
         "SELECT * FROM hosts WHERE hostname = ?", (host,)
         ).fetchall()
         # olddata has to be interated through into a new variable so that the data can be interable
-        #print(olddata)
         for data in olddata:
             someData = data
-        #    print(somedata)
-        #    hostName = somedata[0]
-        #    ipAddr = somedata[1]
-        #    fqdn = somedata[5]
-        #    site = somedata[6]
-        #    parent = somedata[8]
-        #    gardistoAdded = somedata[9]
-        #    gardistoKeyAdded = somedata[10]
-        #    userAdded = somedata[11]
-        #    userKeyAdded = somedata[12]
         return someData
     except:
         #print("no Data Found")
@@ -57,7 +46,7 @@ def printmany():
     print(hostlist)
     #hostlist = cursorObj.fetchall()
     for host in hostlist:
-        hostname = str(host)
+        hostname = str(host[0])
         print(" ")
         prettyPrint(hostname)
         print(" ")

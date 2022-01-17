@@ -39,7 +39,7 @@ def start():
     processdata(enterdata())
     more = input("Would you like to add another host? (y or n) \n")
     if more == "y":
-        processdata()
+        processdata(enterdata())
     else:
         None
 

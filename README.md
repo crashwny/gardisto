@@ -18,14 +18,19 @@ On the Satellite hosts, add `collector.sh` to your crontab.
 
 ### gardisto Monitoring Commands
  - `gardisto run` Runs the gardisto. Should be added to your crontab for a specified interval
- - `gardisto showstats [-stat name, -stats] [-host hostname]` Shows statistics for specified host or all hosts, all stats or one specified (coming soon)gardisto
+ - `gardisto showstats [-stat name, -stats] [-host hostname]` Shows statistics for specified host or all hosts, all stats or one specified (coming soon) gardisto
+ <!--- fix this ^ --->
  - `gardisto show [-host hostname, -all]` Shows information for specified host or for all hosts (single host works, multihost support coming soon)
 
 ## Installation from source
+<!---
+From a clean RHEL/Rocky install, download the sourcecode from https://gardisto.org/latest.tar.gz. You must create a user `gardisto` that does NOT have sudo access. As user `gardisto`, extract sourcecode to `/home/gardisto/gardisto/`, cd to that directory, and run `pip3 install --user -e /usr/src/gardisto/`.
 
-From a clean install, run as root, `wget http://173.64.1.227:65524/gitlab/patrick/gardisto/raw/dev/server-setup.sh` then `bash server-setup.sh`. You will have to input a password for the gardisto user and enter the FQDN or IP address that the gardisto server can be reached by satellite servers.
+Create the directory `/var/gardisto` and copy the gardisto.conf and the whole `collectors` file into it.
+--->
+From a clean RHEL/Rocky install, download the sourcecode from `https://gardisto.org/latest.tar.gz` Extract the file to /home/gardisto/gardisto/, and run `bash /home/gardisto//gardisto/server-setup.sh` as root. You will have to input a password for the gardisto user and enter the FQDN or IP address that the gardisto server can be reached by satellite servers.
 
-For notifications to work, the Gardisto server must have mutt configured and functioning. This package will not install or configure mutt. Normally mutt can be installed with `apt install -y sendmail mutt` or `yum install -y sendmail mutt` and then in the gardisto hone folder, create a `.muttrc` configuration file, and google help to set it up for your email provider.  
+For notifications to work, the Gardisto server must have mutt configured and functioning. This package will not install or configure mutt. Normally mutt can be installed with `yum install -y sendmail mutt tar` and then in the gardisto home folder, create a `.muttrc` configuration file. Use a search engine to find help to set it up for your email provider.  
 
 ### Server Configuration
 
@@ -61,10 +66,6 @@ fqdn TEXT,
 site TEXT NOT NULL,
 type TEXT NOT NULL,
 parent TEXT NOT NULL,
-gardistoAdded BOOLEAN NOT NULL default '0',
-gardistoKeyAdded BOOLEAN NOT NULL default '0',
-userAdded BOOLEAN NOT NULL default '0',
-userKeyAdded BOOLEAN NOT NULL default '0';
 snooze BOOLEAN NOT NULL default '0';
 ```
 
@@ -73,7 +74,7 @@ snooze BOOLEAN NOT NULL default '0';
 Follow these steps to start developing with this project:
 
 1. Ensure `pip` and `pipenv` are installed
-2. Clone repository: `http://173.64.1.227:65524/gitlab/patrick/gardisto`
+2. ask for access to the repository.
 3. `cd` into the repository
 4. `git checkout dev`
 5. Activate virtualenv: `pipenv shell`
