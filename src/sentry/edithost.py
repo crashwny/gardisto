@@ -53,9 +53,9 @@ def oneHost(host):
         field = "snooze"
         newdata = input("Snooze on or off? \n")
         if newdata == "on":
-            newdata = 1
+            newdata = "1"
         else:
-            newdata = 0
+            newdata = "0"
     else:
         print("Please Make A Valid Selection")
         oneHost(host)
