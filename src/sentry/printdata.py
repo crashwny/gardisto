@@ -37,7 +37,7 @@ def prettyPrint(host):
         print("FQDN:            ", somedata[5])
         print("Site:            ", somedata[6])
         print("Parent:          ", somedata[8])
-        print("Snooze:          ", somedata[11])
+        print("Snooze:          ", somedata[13])
         print("")
 
 def printmany():
