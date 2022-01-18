@@ -37,7 +37,7 @@ def getAllColl():
                 data.remove("")
             print(data)
             value = float(data[-1])
-        else:
+        else:\n
             try:
                 value = float(data)
             except:

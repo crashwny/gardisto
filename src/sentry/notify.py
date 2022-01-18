@@ -6,11 +6,12 @@ def notify(host, cause):
     if checkForSnooze(host) == 1:
         return 0
     else:
-        f.write("Good Morning, \n")
+        f.write("Good Morning, ")
         f.write(host)
-        f.write(" is alerting for" )
+        f.write(" is alerting for " )
         f.write(cause)
-        f.write(". Please see Gardisto logs./n-Gardisto")
+        f.write(". Please see Gardisto logs.")
+        f.write("-Gardisto")
         f.close()
         log.write(host)
         log.write("-")
