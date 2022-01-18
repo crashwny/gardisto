@@ -18,9 +18,9 @@ On the Satellite hosts, add `collector.sh` to your crontab.
 
 ### gardisto Monitoring Commands
  - `gardisto run` Runs the gardisto. Should be added to your crontab for a specified interval
- - `gardisto showstats [-stat name, -stats] [-host hostname]` Shows statistics for specified host or all hosts, all stats or one specified (coming soon) gardisto
+ - `gardisto showstats [-stat name, -stats] [-host hostname]` Shows statistics for specified host or all hosts, all stats or one specified (coming soon)
  <!--- fix this ^ --->
- - `gardisto show [-host hostname, -all]` Shows information for specified host or for all hosts (single host works, multihost support coming soon)
+ - `gardisto show [-host hostname, -all]` Shows information for specified host or for all hosts
 
 ## Installation from source
 <!---
