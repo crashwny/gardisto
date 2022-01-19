@@ -24,7 +24,7 @@ def checkForSnooze(hostName):
     cursorObj = con.cursor()
     snooze = cursorObj.execute('SELECT snooze FROM hosts WHERE hostname IS "' + hostName + '";').fetchall()
     print(snooze)
-    return snooze
+    return snooze[0]
 
 def getEmailAddress():
     config = configparser.ConfigParser()
