@@ -3,7 +3,7 @@ import os, configparser, sqlite3
 def notify(host, cause):
     f = open('/tmp/pingmsg.txt', 'w')
     log = open('/var/gardisto/notify.log', 'w')
-    if checkForSnooze(host) == "1":
+    if checkForSnooze(host) == 1:
         return 0
     else:
         f.write("Good Morning, ")
