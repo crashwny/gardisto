@@ -10,7 +10,7 @@ def notify(host, cause):
         message = "Good Morning, \n\n" + host + " is alerting for " + cause + ". Please see Gardisto logs. \n\n -Gardisto"
         f.write(message)
         f.close()
-        now = datetime.now()
+        now = str(datetime.now())
         logMessage = now + "\n" + host + " - " + cause + "\n"
         log.write(logMessage)
         log.close()
