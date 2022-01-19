@@ -1,5 +1,5 @@
 import os, configparser, sqlite3
-from datetime, import datetime
+from datetime import datetime
 
 def notify(host, cause):
     f = open('/tmp/pingmsg.txt', 'w')
