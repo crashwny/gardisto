@@ -22,7 +22,7 @@ def notify(host, cause):
 def checkForSnooze(hostName):
     con = sqlite3.connect('/var/gardisto/sentry.db')
     cursorObj = con.cursor()
-    snooze = cursorObj.execute('SELECT snooze FROM hosts WHERE hostname IS "' + hostName + '";')
+    snooze = cursorObj.execute('SELECT snooze FROM hosts WHERE hostname IS "' + hostName + '";').fetchall()
     print(snooze)
     return snooze
 
