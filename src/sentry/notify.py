@@ -1,4 +1,5 @@
 import os, configparser, sqlite3
+from datetime, import datetime
 
 def notify(host, cause):
     f = open('/tmp/pingmsg.txt', 'w')
@@ -9,7 +10,8 @@ def notify(host, cause):
         message = "Good Morning, \n\n" + host + " is alerting for " + cause + ". Please see Gardisto logs. \n\n -Gardisto"
         f.write(message)
         f.close()
-        logMessage = host + " - " + cause + "\n"
+        now = datetime.now()
+        logMessage = now + "\n" + host + " - " + cause + "\n"
         log.write(logMessage)
         log.close()
         os.system("mutt -s 'Ping Check' " + getEmailAddress() + " < /tmp/pingmsg.txt")
