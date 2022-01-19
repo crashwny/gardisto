@@ -14,6 +14,17 @@ new notification overwrites log, does not maintain old logs.
 
 no matter what the snooze setting is, the alerts still happen
 
+this is output from notify.checkForSnooze
+```
+<sqlite3.Cursor object at 0x7f26e7cab1f0>
+<sqlite3.Cursor object at 0x7f26e7cab1f0>
+<sqlite3.Cursor object at 0x7f26e7cab1f0>
+<sqlite3.Cursor object at 0x7f26e7cab1f0>
+<sqlite3.Cursor object at 0x7f26e7cab1f0>
+<sqlite3.Cursor object at 0x7f26e7cab1f0>
+<sqlite3.Cursor object at 0x7f26e7cab1f0>
+```
+
 #### statistics
 
 all satellite stats stored on ind. hosts, and if a host goes down there is no access to these stats to help diagnose. This should be stored on the server and available.

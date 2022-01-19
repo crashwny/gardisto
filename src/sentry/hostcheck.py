@@ -9,25 +9,6 @@ from sentry import hostping, missingtable, notify, collect
 con = sqlite3.connect('/var/gardisto/sentry.db')
 cursorObj = con.cursor()
 
-# this block is to remind me of the database fields
-# sqlite> .schema hosts
-# CREATE TABLE hosts(
-# hostname TEXT NOT NULL,
-# IP TEXT NOT NULL,
-# lastup TEXT,
-# lastdown TEXT,
-# fqdn TEXT,
-# site TEXT NOT NULL,
-# type TEXT NOT NULL,
-# parent TEXT NOT NULL,
-# status TEXT
-# );
-"""
-def collector():
-    collect()
-
-collthread = threading.Thread(target=collect())
-"""
 def getlist():
     # get host list from database and convert to object python can read
     cursorObj.execute('SELECT hostname, ip FROM hosts')
