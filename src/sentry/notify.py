@@ -23,8 +23,7 @@ def checkForSnooze(hostName):
     con = sqlite3.connect('/var/gardisto/sentry.db')
     cursorObj = con.cursor()
     snooze = cursorObj.execute('SELECT snooze FROM hosts WHERE hostname IS "' + hostName + '";').fetchall()
-    print(snooze)
-    return snooze[0]
+    return snooze[0][0]
 
 def getEmailAddress():
     config = configparser.ConfigParser()
