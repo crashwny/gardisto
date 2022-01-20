@@ -39,7 +39,8 @@ def getAllColl():
             while("" in data):
                 data.remove("")
             print(data)
-            value = float(data[-1])
+            value = data[-1]
+            value = float(value.replace('\n', ''))
         else:
             try:
                 value = float(data)
