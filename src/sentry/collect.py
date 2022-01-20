@@ -33,14 +33,14 @@ def getAllColl():
             totalswap = float(data[1])
             usedswap = float(data[2])
             print(usedswap)
-            value = usedswap // totalswap
+            value = usedswap / totalswap
         elif test == "cpu":
             data = data.split(" ")
             while("" in data):
                 data.remove("")
             print(data)
             rawvalue = data[-1]
-            value = 1 // float(rawvalue.replace('\n', ''))
+            value = 1 / float(rawvalue.replace('\n', ''))
         else:
             try:
                 value = float(data)
@@ -49,7 +49,7 @@ def getAllColl():
         if value < limit:
             None
         else:
-            notify.notify(hostname, test)
+            notify.notify(hostname, test, value, limit)
         os.remove(filepath)
 
 if __name__ == "__main__":
