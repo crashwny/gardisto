@@ -24,7 +24,7 @@ def getAllColl():
         fileObj = open(filepath, "r")
         data = fileObj.read()
         fileObj.close()
-        if value is None:
+        if data is None:
             value = float(0)
         elif test == "ram":
             data = data.split(" ")
