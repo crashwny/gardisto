@@ -2,13 +2,13 @@
 # Gardisto Collector Script to run all collectors and send data to Gardisto server
 collist=$(ls /var/gardisto/collectors/)
 serverfqdn=$(cat /var/gardisto/gardisto.conf|grep SERVER_FQDN|sed 's/^[^=]*=//')
-
+> /tmp/collist.txt
 #this should be made into a vertical list
 # ls /var/gardisto/collectors/ |sed 's/ /\n/gp' > /tmp/collist.txt
 echo $collist |sed 's/ /\n/gp' > /tmp/collist.txt
 
 #then, interate through this list to run the script, tail the log file
-for i in $(cat /tmp/collist.txt)
+for i in $(cat /tmp/collist.txt|grep gar)
 do
   /var/gardisto/collectors/$i
 done

@@ -1,0 +1,5 @@
+user_password: 'password-hash'
+user_name: gardisto
+path: '/home/gardisto/.local/bin'
+gardisto_fqdn: server.fqdn
+notification_email: email@address

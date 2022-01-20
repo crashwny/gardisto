@@ -9,25 +9,6 @@ from sentry import hostping, missingtable, notify, collect
 con = sqlite3.connect('/var/gardisto/sentry.db')
 cursorObj = con.cursor()
 
-# this block is to remind me of the database fields
-# sqlite> .schema hosts
-# CREATE TABLE hosts(
-# hostname TEXT NOT NULL,
-# IP TEXT NOT NULL,
-# lastup TEXT,
-# lastdown TEXT,
-# fqdn TEXT,
-# site TEXT NOT NULL,
-# type TEXT NOT NULL,
-# parent TEXT NOT NULL,
-# status TEXT
-# );
-
-def collector():
-    collect.collect()
-
-collthread = threading.Thread(target=collector)
-
 def getlist():
     # get host list from database and convert to object python can read
     cursorObj.execute('SELECT hostname, ip FROM hosts')
@@ -90,10 +71,11 @@ def resultwrite():
     for a, b in resultlist:
         updatestatus(a, b, timenow)
 
-if __name__ == "__main__":
-    start()
-
 def start():
-    collthread.start()
+    #collthread.start()
+    collect.getAllColl()
     resultwrite()
     con.close()
+
+if __name__ == "__main__":
+    start()

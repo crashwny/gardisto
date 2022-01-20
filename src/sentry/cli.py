@@ -11,10 +11,11 @@ def create_parser():
     parser.add_argument('-all', dest="allhost", action="store_true", help="Use all hosts for desired action")
     parser.add_argument('-stat', action="store", dest="stat", help="Enter a specific statistic to check")
     parser.add_argument('-stats', action="store_true", help="Run check with all statistics")
+    parser.add_argument('-script', action="store", dest="scriptJson")
     return parser
 
 def main():
-    from sentry import hostentry, hostping, hostcheck, removehost, edithost
+    from sentry import hostentry, hostping, hostcheck, removehost, edithost, scriptrun
     args = create_parser().parse_args()
 
     #print(args.toDo)
@@ -23,7 +24,7 @@ def main():
     #print(args.stat)
     #print(args.stats)
     if args.toDo == 'addhost':
-        hostentry.processdata()
+        hostentry.start()
         sys.exit()
     if args.toDo == 'run':
         hostcheck.start()
@@ -49,6 +50,11 @@ def main():
         else:
             showstats.oneStat(stat)
             sys.exit()
+    if args.toDo == 'scriptEntry':
+        hostentry.script()
+        sys.exit()
+
+
     else:
         print("Please use an argument")
         sys.exit()

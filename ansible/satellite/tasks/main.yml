@@ -1,0 +1,6 @@
+---
+- name: Copy collectors to host
+  shell: cp /usr/src/gardisto/collectors/* /var/gardisto/collectors/
+
+- name: change ownership of /var/gardisto
+  command: chown -R gardisto:gardisto /var/gardisto

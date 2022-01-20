@@ -1,4 +1,5 @@
 # edit a host's db entry
+
 import sqlite3
 from sentry import missingtable
 con = sqlite3.connect('/var/gardisto/sentry.db')
@@ -7,26 +8,12 @@ from sentry import hostentry, printdata
 
 def oneHost(host):
     somedata = printdata.getdata(host)
-#    olddata = cursorObj.execute(
-#        "SELECT * FROM hosts WHERE hostname = ?", (host,)
-#    ).fetchall()
-    # olddata has to be interated through into a new variable so that the data can be interable
-#    print(olddata)
-#    for data in olddata:
-#        somedata = data
-#    newdata = hostentry.enterdata()
-#    cursorObj.execute(
-#    print(somedata)
     hostName = somedata[0]
     ipAddr = somedata[1]
     fqdn = somedata[5]
     site = somedata[6]
     parent = somedata[8]
-    gardistoAdded = somedata[9]
-    gardistoKeyAdded = somedata[10]
-    userAdded = somedata[11]
-    userKeyAdded = somedata[12]
-
+    snooze = somedata[13]
 
     print(hostName)
     print('''
@@ -37,8 +24,7 @@ def oneHost(host):
     3: FQDN
     4: Site/Colocation
     5: Parent Host
-    6: Gardisto User Added y/n?
-    7: Gardisto Key Added y/n?
+    6: Snooze Host
 
     ''')
     choice = input("Enter the number:\n")
@@ -64,20 +50,19 @@ def oneHost(host):
         print("Old Parent host name is " + parent)
         newdata = input("What is the new parent host name?\n")
     elif choice == "6":
-        field = "gardistoAdded"
-        newdata = input("Has the Gardisto user been added? (y or n)\n")
-        if newdata == "y":
+        field = "snooze"
+        newdata = input("Snooze on or off? \n")
+        if newdata == "on":
             newdata = "1"
         else:
             newdata = "0"
     else:
-        field = "gardistoKeyAdded"
-        newdata = input("Has the Gardisto user's key been added? (y or n)\n")
-        if newdata == "y":
-            newdata = 1
-        else:
-            newdata = 0
+        print("Please Make A Valid Selection")
+        oneHost(host)
 
+    processData(host, field, newdata)
+
+def processData(host, field, newdata):
     command = 'UPDATE hosts SET ' + field + ' = "' + newdata + '" WHERE hostname = "' + host + '"'
     #print(command)
     cursorObj.execute(command)

@@ -1,0 +1,19 @@
+---
+- name: install mutt
+  yum:
+    name:
+      - mutt
+      - sendmail
+      - cyrus-sasl
+      - cyrus-sasl-plain
+    state: present
+
+- name: add mutt configuration file
+  ansible.builtin.template:
+    src: templates/muttrc.j2
+    dest: /home/gardisto/.muttrc
+    owner: gardisto
+    group: gardisto
+    mode: '0644'
+
+- include: server-install.yml
