@@ -33,14 +33,14 @@ def getAllColl():
             totalswap = float(data[1])
             usedswap = float(data[2])
             print(usedswap)
-            value = usedswap / totalswap
+            value = usedswap // totalswap
         elif test == "cpu":
             data = data.split(" ")
             while("" in data):
                 data.remove("")
             print(data)
-            value = data[-1]
-            value = float(value.replace('\n', ''))
+            rawvalue = data[-1]
+            value = 1 // float(rawvalue.replace('\n', ''))
         else:
             try:
                 value = float(data)
