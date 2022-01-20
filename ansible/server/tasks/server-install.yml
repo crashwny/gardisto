@@ -1,0 +1,11 @@
+---
+
+- name: Add another bin dir to system-wide $PATH.
+  copy:
+    dest: /etc/profile.d/custom-path.sh
+    content: 'PATH=$PATH:{{ path }}'
+
+- name: install Gardisto
+  shell: 'pip3 install --user -e /usr/src/gardisto/'
+  become: yes
+  become_user: gardisto

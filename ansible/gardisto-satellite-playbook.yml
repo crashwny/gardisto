@@ -1,0 +1,11 @@
+---
+- name: install Gardisto for satellite on rhel host
+  hosts:
+    - gardisto_satellites
+
+  become: yes
+  vars_files: inventory/vars/gardisto.yml
+
+  roles:
+  - host-init
+  - satellite
