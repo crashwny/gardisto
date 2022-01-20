@@ -1,7 +1,7 @@
 import os, configparser, sqlite3
 from datetime import datetime
 
-def notify(host, cause):
+def notify(host, cause, value, limit):
     f = open('/tmp/pingmsg.txt', 'w')
     log = open('/var/gardisto/notify.log', 'a')
     if checkForSnooze(host) == 1:
@@ -11,7 +11,7 @@ def notify(host, cause):
         f.write(message)
         f.close()
         now = str(datetime.now())
-        logMessage = now + "\n" + host + " - " + cause + "\n"
+        logMessage = now + "\n" + host + " - " + cause + "\n" + value + " / " limit
         log.write(logMessage)
         log.close()
         os.system("mutt -s 'Ping Check' " + getEmailAddress() + " < /tmp/pingmsg.txt")
